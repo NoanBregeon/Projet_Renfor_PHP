@@ -13,12 +13,14 @@ session_start();
 </head>
 <body>
     <div class="contener">
-        <div class="choix du niveau">
-            <a class="button" href="quiz.php?niv=1">facile</a><br><br>
-            <a class="button" href="quiz.php?niv=2">moyen</a><br><br>
-            <a class="button" href="quiz.php?niv=3">difficile</a>
-            
-        </div>
+        <?php
+            if(isset($_GET["type"]) && !isset($_GET["difficulty"]))
+            echo '<div class="choix du niveau">
+                <a class="button" href="quiz.php?niv=1">facile</a><br><br>
+                <a class="button" href="quiz.php?niv=2">moyen</a><br><br>
+                <a class="button" href="quiz.php?niv=3">difficile</a> 
+            </div>';
+        ?>
     </div>
 </body>
 </html>
