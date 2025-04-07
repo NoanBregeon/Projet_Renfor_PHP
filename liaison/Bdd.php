@@ -1,17 +1,24 @@
 <?php
-class Bdd {
-    private static $conn;
 
-    public static function getConnection() {
-        if (!self::$conn) {
-            try {
-                self::$conn = new PDO("mysql:host=localhost;dbname=projet_php;charset=utf8", "root", "");
-                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die("Erreur de connexion : " . $e->getMessage());
-            }
-        }
-        return self::$conn;
-    }
+$host = "localhost";
+$db='projet_php';
+$user ='root';
+$pass ='';
+$port = '3306';
+$charset = 'utf8mb4';
+
+$options = [
+    PDO::ATTR_ERRMODE =>\PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE =>\PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES => false,
+];
+
+$dsn = "mysql:host=$host;dbname=$db;port=$port;charset=$charset";
+$pdo = new PDO($dsn, $user, $pass, $options);
+
+try{
+    $pdo=new PDO($dsn, $user, $pass, $options);
+}catch(PDOException $e){
+    echo $e->getMessage();
 }
 ?>
