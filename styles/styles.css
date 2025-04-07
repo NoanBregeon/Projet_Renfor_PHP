@@ -4,7 +4,7 @@ body {
     font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
 }
 
-#contener {
+.contener {
     text-align: center;
     margin: 0;
 }
@@ -35,9 +35,10 @@ div {
 .bloquer {
     background-color: #696969;
     border: 5px solid #464646;
+    color: black;
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0);
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0);
 }
 
 #connexion {

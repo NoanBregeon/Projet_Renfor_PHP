@@ -14,7 +14,7 @@ session_start();
         <link rel="stylesheet" href="styles/styles.css">
     </head>
     <body>
-        <div id="contener">
+        <div class="contener">
             <a class="button" id="connexion" href="page_connexion.php">Connexion</a><br>
             <h1>Bienvenue <?php // $_SESSION['nom'] ?></h1><br>
             <div>
