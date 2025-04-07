@@ -51,25 +51,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="connexion-container">
         <h2>Connexion</h2>
 
-        <?php if ($message): ?>
-            <p style="color:red"><?= ($message) ?></p>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <p>✅ Vous êtes déjà connecté en tant que <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>.</p>
+            <a href="logout.php" class="button">Se déconnecter</a>
+        <?php else: ?>
+            <?php if ($message): ?>
+                <p style="color:red"><?= htmlspecialchars($message) ?></p>
+            <?php endif; ?>
+
+            <form method="POST" class="connexion-form">
+                <label>Nom d’utilisateur :</label><br>
+                <input type="text" name="username" required><br>
+
+                <label>Mot de passe :</label><br>
+                <input type="password" name="password" required><br>
+
+                <button type="submit" class="button">Se connecter</button>
+            </form>
+
+            <div style="margin-top: 20px;">
+                <a href="index.php" class="button">⬅ Retour</a>
+                <a href="creer_compte.php" class="button">Créer un compte ✍️</a>
+            </div>
         <?php endif; ?>
-
-        <form method="POST" class="connexion-form">
-            <label>Nom d’utilisateur :</label><br>
-            <input type="text" name="username" required><br>
-
-            <label>Mot de passe :</label><br>
-            <input type="password" name="password" required><br>
-
-            <button type="submit" class="button" id="button_connexion">Se connecter</button>
-        </form>
-        <div id="button_return_creation">
-        <a href="index.php" class="button">⬅ Retour</a>
-        <a href="creer_compte.php" class="button">Créer un compte ✍️</a>
-</div>
-
     </div>
 </body>
 </html>
+
 
