@@ -16,10 +16,10 @@ session_start();
     </head>
     <body>
         <div class="contener">
-            <?php if(isset($_SESSION['id_user'])): ?>
+            <?php if(isset($_SESSION['nom'])): ?>
             <a class="button" id="connexion" href="page_connexion.php">Connexion</a><br>
             
-            <h1>Bienvenue <?php // $_SESSION['nom'] ?></h1><br>
+            <h1>Bienvenue</h1><br>
             <div>
                 <a class="button" href="quiz/quiz.php?type=addition">Addition <img src="styles/plus.png" alt="plus" title="plus"></a>
             </div>
