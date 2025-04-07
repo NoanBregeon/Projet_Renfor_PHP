@@ -9,12 +9,12 @@
     </head>
     <body>
         <div id="contener">
-            <a class="button" id="connexion" href="">Connexion</a>
-            <h1>Bienvenue</h1>
-            <a href="">Addition</a>
-            <a href="">Soustraction</a>
-            <a href="">Multiplication</a>
-            <a href="">Division</a>
+            <a class="button" id="connexion" href="">Connexion</a><br>
+            <h1>Bienvenue</h1><br>
+            <a href="">Addition</a><br>
+            <a href="">Soustraction</a><br>
+            <a href="">Multiplication</a><br>
+            <a href="">Division</a><br>
         </div>
     </body>
     </html>
