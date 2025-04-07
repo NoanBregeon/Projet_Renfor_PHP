@@ -10,7 +10,7 @@
     <body>
         <div id="contener">
             <a class="button" id="connexion" href="page_connexion.php">Connexion</a><br>
-            <h1>Bienvenue</h1><br>
+            <h1>Bienvenue <?php $nom ?></h1><br>
             <a href="quiz/quiz.php?type=addition">Addition</a><br>
             <a href="quiz/quiz.php?type=soustraction">Soustraction</a><br>
             <a href="quiz/quiz.php?type=multiplication">Multiplication</a><br>
