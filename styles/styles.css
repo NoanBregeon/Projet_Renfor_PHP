@@ -1,11 +1,20 @@
+#contener {
+    text-align: center;
+}
+
 .button {
     margin: 20px 50px 200px 0px;
     background-color: #15ff00;
     border: 5px solid #0026fd;
     border-radius: 20px;
-    font-size: 100px;
+<<<<<<< HEAD
+    font-size: 50px;
 }
 
 #connexion {
     float: right;
 }
+=======
+    font-size: 100px;
+}
+>>>>>>> 3e7fe6aabceb3bad0672fa046237acb77ba3ef2c
