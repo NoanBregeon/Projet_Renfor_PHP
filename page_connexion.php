@@ -30,19 +30,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="styles\styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/connexion.css">
 </head>
 <body>
-    <h2>Connexion</h2>
-    <?php if ($message): ?>
-        <p style="color:red"><?= ($message) ?></p>
-    <?php endif; ?>
-    <form method="POST" class="connexion">
-        <label>Nom d’utilisateur :</label><br>
-        <input type="text" name="username" required><br><br>
-        <label>Mot de passe :</label><br>
-        <input type="password" name="password" required><br><br>
-        <button type="submit">Se connecter</button>
-    </form>
+    <div class="connexion-container">
+        <h2>Connexion</h2>
+
+        <?php if ($message): ?>
+            <p style="color:red"><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
+
+        <form method="POST" class="connexion-form">
+            <label>Nom d’utilisateur :</label><br>
+            <input type="text" name="username" required><br>
+
+            <label>Mot de passe :</label><br>
+            <input type="password" name="password" required><br>
+
+            <button type="submit" class="button">Se connecter</button>
+        </form>
+    </div>
 </body>
 </html>
+
