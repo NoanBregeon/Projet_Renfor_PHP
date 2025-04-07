@@ -13,13 +13,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch();
 
     if ($user && ($password === $user['password'])) {
+        // Sauvegarde des infos de base
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
+        $_SESSION['nom'] = $user['username'];
         $_SESSION['role'] = $user['role'];
-        $stmt = $pdo->prepare("SELECT * FROM progression WHERE users.id = ");
-        header("Location: page_connexion.php");
+    
+        // Récupération de la progression
+        $stmt = $pdo->prepare("SELECT * FROM progression WHERE id_pseudo = ?");
+        $stmt->execute([$user['id']]);
+        $progression = $stmt->fetch();
+    
+        // Stockage dans $_SESSION
+        $_SESSION['addition'] = $progression['progression_addition'];
+        $_SESSION['soustraction'] = $progression['progression_soustraction'];
+        $_SESSION['multiplication'] = $progression['progression_multiplication'];
+        $_SESSION['division'] = $progression['progression_division'];
+    
+        // Redirection
+        header("Location: index.php");
         exit;
-    } else {
+    }    
+    else {
         $message = "Nom d’utilisateur ou mot de passe incorrect.";
     }
 }
@@ -48,8 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Mot de passe :</label><br>
             <input type="password" name="password" required><br>
 
-            <button type="submit" class="button">Se connecter</button>
+            <button type="submit" class="button" id="button_connexion">Se connecter</button>
         </form>
+        <div id="button_return_creation">
+        <a href="index.php" class="button">⬅ Retour</a>
+        <a href="creer_compte.php" class="button">Créer un compte ✍️</a>
+</div>
+
     </div>
 </body>
 </html>
