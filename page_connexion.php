@@ -1,45 +1,47 @@
 <?php
 require_once 'liaison\Bdd.php';
-
 session_start();
+$message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pseudomail = $_POST['pseudo'];
+
+    $username = $_POST['username'];
     $password = $_POST['password'];
-    
-    $stmt = $pdo->prepare('SELECT * FROM users WHERE pseudomail = :pseudomail');
-    $stmt->execute(['pseudomail' => $pseudomail]);
+
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    if ($user && password_verify($password, $user['password'])) {
-
+    if ($user && ($password === $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        header('Location: dashboard.php');
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role'];
+        $stmt = $pdo->prepare("SELECT * FROM progression WHERE users.id")
+        header("Location: index.php");
         exit;
     } else {
-        $error = 'Identifiant ou mot de passe incorrect.';
+        $message = "Nom d’utilisateur ou mot de passe incorrect.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="..\styles\styles.css">
+    <title>Connexion</title>
 </head>
 <body>
-<form method="POST">
-    <h2>Connexion Admin</h2>
-    <input type="text" name="pseudo" placeholder="Identifiant" required><br>
-    <input type="password" name="password" placeholder="Mot de passe" required><br>
-    <button type="submit">Se connecter</button>
-</form>
-<?php if (isset($error)) echo '<p style="color:red">'.$error.'</p>'; ?>
-
-    
+    <h2>Connexion</h2>
+    <?php if ($message): ?>
+        <p style="color:red"><?= ($message) ?></p>
+    <?php endif; ?>
+    <form method="POST">
+        <label>Nom d’utilisateur :</label><br>
+        <input type="text" name="username" required><br><br>
+        <label>Mot de passe :</label><br>
+        <input type="password" name="password" required><br><br>
+        <button type="submit">Se connecter</button>
+    </form>
 </body>
 </html>
