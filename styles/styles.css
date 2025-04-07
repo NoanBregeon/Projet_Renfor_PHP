@@ -32,6 +32,69 @@ div {
     box-shadow: 8px 13px #ffde59;
 }
 
+.facile {
+    margin: 75px 50px 75px 0px;
+    background-color: #19fd52;
+    border: 5px solid rgb(15, 182, 0);
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #5e17eb;
+    box-shadow: 5px 10px #008d0c;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+}
+
+.facile:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #00aa39;
+    box-shadow: 8px 13px #00680e;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.moyen {
+    margin: 75px 50px 75px 0px;
+    background-color: #fffb00;
+    border: 5px solid rgb(182, 164, 0);
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #5e17eb;
+    box-shadow: 5px 10px #8d7300;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+}
+
+.moyen:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #aaa700;
+    box-shadow: 8px 13px #686100;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.difficile {
+    margin: 75px 50px 75px 0px;
+    background-color: #fd1919;
+    border: 5px solid rgb(182, 0, 0);
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #5e17eb;
+    box-shadow: 5px 10px #8d0000;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+}
+
+.difficile:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #aa0000;
+    box-shadow: 8px 13px #680000;
+    transition: all 0.3s ease;
+    color: white;
+}
+
 .bloquer {
     background-color: #696969;
     border: 5px solid #464646;
