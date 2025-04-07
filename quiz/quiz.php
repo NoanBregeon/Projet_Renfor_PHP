@@ -16,6 +16,7 @@ $_SESSION[$progression]=0;
     <div class="contener">
         <?php
             if(isset($_GET["type"]) && !isset($_GET["niv"])){
+            echo '<h2>Choisi ta difficulté</h2>';
             echo '<div class="choix du niveau">
                 <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">facile</a></div>';
                 if ($_SESSION[$progression] >= 20){

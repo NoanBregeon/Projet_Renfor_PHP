@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 07 avr. 2025 à 09:34
+-- Généré le : lun. 07 avr. 2025 à 12:12
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -31,14 +31,21 @@ DROP TABLE IF EXISTS `progression`;
 CREATE TABLE IF NOT EXISTS `progression` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_pseudo` int DEFAULT NULL,
-  `question_id` int DEFAULT NULL,
-  `user_answer` float DEFAULT NULL,
-  `is_correct` tinyint(1) DEFAULT NULL,
   `answered_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `progression_addition` int DEFAULT '1',
+  `progression_soustraction` int NOT NULL DEFAULT '1',
+  `progression_division` int NOT NULL DEFAULT '1',
+  `progression_multiplication` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `user_id` (`id_pseudo`),
-  KEY `question_id` (`question_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `user_id` (`id_pseudo`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `progression`
+--
+
+INSERT INTO `progression` (`id`, `id_pseudo`, `answered_at`, `progression_addition`, `progression_soustraction`, `progression_division`, `progression_multiplication`) VALUES
+(1, 1, '2025-04-07 13:45:34', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -319,19 +326,35 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` enum('user','admin') DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `age`, `role`) VALUES
-(1, 'Admin', 'Admin1234', NULL, 'admin'),
-(2, 'lisa', '1234', 8, 'user'),
-(3, 'tom', 'abcd', 8, 'user'),
-(4, 'emma', 'test', 8, 'user'),
-(5, 'leo', 'maths', 8, 'user'),
-(6, 'mia', 'cool', 8, 'user');
+(1, 'Admin', 'Admin1234', NULL, 'admin');
+
+--
+-- Déclencheurs `users`
+--
+DROP TRIGGER IF EXISTS `after_user_insert`;
+DELIMITER $$
+CREATE TRIGGER `after_user_insert` AFTER INSERT ON `users` FOR EACH ROW BEGIN
+  INSERT INTO progression (
+    id_pseudo, 
+    progression_addition, 
+    progression_soustraction, 
+    progression_division, 
+    progression_multiplication
+  )
+  VALUES (
+    NEW.id, 
+    1, 1, 1, 1
+  );
+END
+$$
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
