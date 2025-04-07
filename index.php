@@ -35,7 +35,7 @@ session_start();
             <?php else: ?>
                 <h1>Bienvenue</h1>
                 <div>
-                <a class="button pasco" id="connexion" href="page_connexion.php">Connexion</a>
+                    <a class="button" id="connexion" href="page_connexion.php">Connexion</a>
                 </div>
                 <?php endif; ?>
         </div>
