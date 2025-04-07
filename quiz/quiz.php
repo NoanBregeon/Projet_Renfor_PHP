@@ -36,7 +36,7 @@ $_SESSION[$progression]=0;
                 
                 
                 ?>
-                <a href=".." class="button">retour</a>
+                <a href=".." class="button retour">retour</a>
     </div>
 </body>
 </html>
