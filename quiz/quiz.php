@@ -17,19 +17,25 @@ $_SESSION[$progression]=0;
         <?php
             if(isset($_GET["type"]) && !isset($_GET["niv"])){
             echo '<div class="choix du niveau">
-                <a class="button" href="quiz.php?type='.$_GET["type"].'&niv=1">facile</a><br><br>
-                <a class="button" href="quiz.php?type='.$_GET["type"];
+                <a class="button" href="quiz.php?type='.$_GET["type"].'&niv=1">facile</a><br><br>';
                 if ($_SESSION[$progression] >= 20){
-                    echo '&niv=2">moyen</a><br><br>';
-                }else
-                    echo '" class="bloquer" >moyen</a><br><br>';
+                    echo '<a class="button" href="quiz.php?type='.$_GET["type"].'&niv=2">moyen</a><br><br>';
+                }else{
 
-            //     <a class="button" href="quiz.php?type='.$_GET["type"].'&niv=3">difficile</a> 
-            // </div>';
-        }else
-
-
-        ?>
+                    echo '<a class="button bloquer" href="quiz.php?type='.$_GET["type"].'">moyen</a><br><br>';
+                }
+                if ($_SESSION[$progression] >= 40){
+                    echo '<a class="button" href="quiz.php?type='.$_GET["type"].'&niv=3">difficile</a><br><br>';
+                }else{
+                    
+                    echo '<a class="button bloquer" href="quiz.php?type='.$_GET["type"].'">difficile</a><br><br>';
+                }
+                
+                echo '</div>';
+            }
+                
+                
+                ?>
     </div>
 </body>
 </html>
