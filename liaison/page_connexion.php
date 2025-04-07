@@ -1,5 +1,5 @@
 <?php
-require_once 'liaison/Bdd.php';
+require_once 'Bdd.php';
 session_start();
 $message = "";
 
@@ -45,8 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/connexion.css">
+    <link rel="stylesheet" href="..\styles\styles.css">
 </head>
 <body>
     <div class="connexion-container">
@@ -54,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php if (isset($_SESSION['user_id'])): ?>
             <p>✅ Vous êtes déjà connecté en tant que <strong><?= htmlspecialchars($_SESSION['nom']) ?></strong>.</p>
-            <a href="liaison/deconnexion.php" class="button">Se déconnecter</a>
+            <a href="deconnexion.php" class="button">Se déconnecter</a>
 
         <?php else: ?>
             <?php if (isset($_GET['inscription']) && $_GET['inscription'] === 'ok'): ?>
@@ -76,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
 
             <div style="margin-top: 20px;">
-                <a href="index.php" class="button">⬅ Retour</a>
+                <a href="..\index.php" class="button">⬅ Retour</a>
                 <a href="creer_compte.php" class="button">Créer un compte ✍️</a>
             </div>
         <?php endif; ?>

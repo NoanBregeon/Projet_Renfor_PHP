@@ -1,5 +1,5 @@
 <?php
-require_once 'liaison/Bdd.php';
+require_once 'Bdd.php';
 session_start();
 $message = "";
 
@@ -38,8 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Créer un compte</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/connexion.css">
+    <link rel="stylesheet" href="..\styles\styles.css">
 </head>
 <body>
     <div class="connexion-container">
@@ -63,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div style="margin-top: 20px;">
-            <a href="index.php" class="button">⬅ Retour</a>
+            <a href="..\index.php" class="button">⬅ Retour</a>
             <a href="page_connexion.php" class="button">Déjà un compte ?</a>
         </div>
     </div>
