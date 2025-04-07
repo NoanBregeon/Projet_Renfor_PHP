@@ -18,7 +18,6 @@ session_start();
         <div class="contener">
             <?php if(isset($_SESSION['nom'])): ?>
             <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnection</a><br>
-            
             <h1>Bienvenue</h1><br>
             <div>
                 <a class="button" href="quiz/quiz.php?type=addition">Addition <img src="styles/plus.png" alt="plus" title="plus"></a>
