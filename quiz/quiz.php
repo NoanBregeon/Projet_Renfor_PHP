@@ -14,7 +14,9 @@ session_start();
 <body>
     <div class="contener">
         <div class="choix du niveau">
-
+            <a href="quiz.php?niv=1">facile</a>
+            <a href="quiz.php?niv=2">moyen</a>
+            <a href="quiz.php?niv=3" >difficile</a>
             
         </div>
     </div>
