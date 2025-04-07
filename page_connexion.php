@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Connexion</h2>
 
         <?php if (isset($_SESSION['user_id'])): ?>
-            <p>✅ Vous êtes déjà connecté en tant que <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>.</p>
-            <a href="logout.php" class="button">Se déconnecter</a>
+            <p>✅ Vous êtes déjà connecté en tant que <strong><?= ($_SESSION['nom']) ?></strong>.</p>
+            <a href="liaison\deconnexion.php" class="button">Se déconnecter</a>
         <?php else: ?>
             <?php if ($message): ?>
                 <p style="color:red"><?= htmlspecialchars($message) ?></p>
