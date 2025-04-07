@@ -95,6 +95,14 @@ div {
     color: white;
 }
 
+.retour {
+    float: left;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+
 .bloquer {
     margin: 75px 50px 75px 0px;
     background-color: #696969;
@@ -144,13 +152,6 @@ img {
 img:hover {
     transform: rotate(5deg) scale(1.05);
 }
-
-
-
-
-
-
-/* connexion css */
 
 .connexion-container {
     text-align: center;
