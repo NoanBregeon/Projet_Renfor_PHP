@@ -139,6 +139,17 @@ div {
     box-shadow: 3px 6px #ffde59;
 }
 
+#deconnexion {
+    margin: 20px;
+    float: right;
+    background-color: #ff7d7d;
+    border: 4px solid #c20000;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: #4f0000;
+    font-weight: bold;
+    box-shadow: 3px 6px #ff5959;
+}
 
 h1, h2 {
     color: #ff6b6b;
