@@ -1,7 +1,6 @@
 <?php
 $question=1;
-    if($_GET["type"]=="addition"){
-        if($_GET["niv"]==1) :
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +14,17 @@ $question=1;
             <?php 
             while ($question<=20){
                 echo '<div class="button';
-                if($_SESSION["addition"]<$question){echo " bloquer";}
-                echo'">'.$question.'</div>';
+                if($_SESSION[$_GET["type"]]<$question){echo " bloquer";}
+                echo'">';
+                if($_SESSION[$_GET["type"]]>=$question){
+                    echo ' <a href="quiz.php?type='.$_GET["type"].'&question=';
+                    if($_GET["niv"]==1){echo $question;}
+                    elseif($_GET["niv"]==2){echo $question+20;}
+                    elseif($_GET["niv"]==3){echo $question+40;}
+                    echo'">';
+            
+            }
+                echo $question.'</a></div>';
                 $question=$question+1;
             }
             ?>
@@ -24,4 +32,3 @@ $question=1;
         
     </body>
     </html>
-<?php endif; }?>
