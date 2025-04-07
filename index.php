@@ -17,10 +17,18 @@ session_start();
         <div id="contener">
             <a class="button" id="connexion" href="page_connexion.php">Connexion</a><br>
             <h1>Bienvenue <?php // $_SESSION['nom'] ?></h1><br>
-            <a class="button" href="quiz/quiz.php?type=addition">Addition</a>
-            <a class="button" href="quiz/quiz.php?type=soustraction">Soustraction</a>
-            <a class="button" href="quiz/quiz.php?type=multiplication">Multiplication</a>
-            <a class="button" href="quiz/quiz.php?type=division">Division</a>
+            <div>
+                <a class="button" href="quiz/quiz.php?type=addition">Addition</a>
+            </div>
+            <div>
+                <a class="button" href="quiz/quiz.php?type=soustraction">Soustraction</a>
+            </div>
+            <div>
+                <a class="button" href="quiz/quiz.php?type=multiplication">Multiplication</a>
+            </div>
+            <div>
+                <a class="button" href="quiz/quiz.php?type=division">Division</a>
+            </div>
         </div>
     </body>
     </html>
