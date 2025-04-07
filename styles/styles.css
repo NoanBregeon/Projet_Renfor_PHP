@@ -177,3 +177,13 @@ img:hover {
     padding: 5px;
     margin-bottom: 15px;
 }
+#button_connexion{
+    margin: 25px 25px 25px 25px;
+}
+#button_connexion:hover {
+    background-color: #5cb85c;
+    color: white;
+}
+#button_return_creation{
+    margin: 50px 25px 25px 25px;
+}
