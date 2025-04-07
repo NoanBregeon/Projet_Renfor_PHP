@@ -9,7 +9,12 @@
     </head>
     <body>
         <div id="contener">
-            <a id="button" href="">Connexion</a>
+            <a class="button" href="">Connexion</a>
+            <h1>Bienvenue</h1>
+            <a href="">+</a>
+            <a href="">-</a>
+            <a href="">x</a>
+            <a href="">%</a>
         </div>
         <script src="testjs.js"></script>
     </body>
