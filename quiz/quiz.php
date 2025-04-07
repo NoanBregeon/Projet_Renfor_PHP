@@ -33,6 +33,7 @@ $_SESSION[$progression]=40;
                 }
                 
                 echo '</div>';
+                echo $_SESSION[$progression];
             }
                 
                 
