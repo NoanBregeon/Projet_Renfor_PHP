@@ -1,7 +1,7 @@
 <?php
 session_start();
 $progression=$_GET["type"];
-$_SESSION[$progression]=0;
+$_SESSION[$progression]=40;
 ?>
 <!DOCTYPE html>
 <html>
