@@ -1,7 +1,7 @@
-#button {
+.button {
 
-    background-color: #8f8f8f;
-    border: 5px solid #8f8f8f;
+    background-color: #15ff00;
+    border: 5px solid #0026fd;
     border-radius: 20px;
     font-size: 100px;
     float: right;
