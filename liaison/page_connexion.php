@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['division'] = $progression['progression_division'];
 
         // Redirection
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit;
     } else {
         $message = "❌ Nom d’utilisateur ou mot de passe incorrect.";
