@@ -68,7 +68,7 @@ div {
 
 .moyen:hover {
     transform: scale(1.1) rotate(2deg);
-    background-color: #aaa700;
+    background-color: #ccc900;
     box-shadow: 8px 13px #686100;
     transition: all 0.3s ease;
     color: white;
@@ -96,12 +96,16 @@ div {
 }
 
 .bloquer {
+    margin: 75px 50px 75px 0px;
     background-color: #696969;
     border: 5px solid #464646;
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
     color: black;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0);
+    box-shadow: 5px 10px rgba(0, 0, 0, 0);
+    padding: 15px 30px;
+    transition: all 0.3s ease;
 }
 
 .bloquer:hover {
