@@ -1,7 +1,6 @@
 <?php
 session_start();
-$progression=$_GET["type"]
-$_SESSION[]
+$progression=$_GET["type"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +18,7 @@ $_SESSION[]
             echo '<div class="choix du niveau">
                 <a class="button" href="quiz.php?type='.$_GET["type"].'&niv=1">facile</a><br><br>
                 <a class="button" href="quiz.php?type='.$_GET["type"];
-                if ($_SESSION[$progression]>=10){
+                if ($_SESSION[$progression]>=20){
                     echo '&niv=2">moyen</a><br><br>';
                 }else
                     echo '" class="bloquer" >moyen</a><br><br>';
