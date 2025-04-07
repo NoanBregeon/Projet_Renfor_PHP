@@ -17,7 +17,7 @@ session_start();
     <body>
         <div class="contener">
             <?php if(isset($_SESSION['nom'])): ?>
-            <a class="button" id="connexion" href="page_connexion.php">Connexion</a><br>
+            <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnection</a><br>
             
             <h1>Bienvenue</h1><br>
             <div>
