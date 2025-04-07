@@ -11,6 +11,12 @@
     font-size: 50px;
 }
 
+.bloquer {
+    background-color: #696969;
+    border: 5px solid #5e5e5e;
+    border-radius: 10px;
+}
+
 #connexion {
     float: right;
 }
