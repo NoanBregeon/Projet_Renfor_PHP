@@ -11,10 +11,10 @@
         <div id="contener">
             <a class="button" id="connexion" href="">Connexion</a>
             <h1>Bienvenue</h1>
-            <a href="">+</a>
-            <a href="">-</a>
-            <a href="">x</a>
-            <a href="">%</a>
+            <a href="">Addition</a>
+            <a href="">Soustraction</a>
+            <a href="">Multiplication</a>
+            <a href="">Division</a>
         </div>
     </body>
     </html>
