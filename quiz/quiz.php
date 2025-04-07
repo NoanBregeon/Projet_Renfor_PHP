@@ -9,7 +9,7 @@ $progression=$_GET["type"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gabou quiz</title>
     <meta name="description" content="">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css?v=0">
 </head>
 <body>
     <div class="contener">
@@ -33,8 +33,9 @@ $progression=$_GET["type"];
                 
                 echo '</div>';
             }
-                
-            include("addition.php");
+            if(isset($_GET["type"]) && isset($_GET["niv"])){
+                include("addition.php");
+            }
 
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';

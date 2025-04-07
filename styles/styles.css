@@ -99,7 +99,7 @@ div {
 }
 
 .retour {
-    float: left;
+    float: right;
     position: fixed;
     bottom: 20px;
     left: 20px;
@@ -120,11 +120,10 @@ div {
 }
 
 .bloquer:hover {
-    transform: scale(1.1) rotate(2deg);
-    background-color: #272727;
-    box-shadow: 8px 13px #000000;
+    background-color: #696969;
+    box-shadow: 5px 10px #000000;
     transition: all 0.3s ease;
-    color: white;
+    color: black;
 }
 
 #connexion {
@@ -197,4 +196,17 @@ img:hover {
 }
 #button_return_creation{
     margin: 50px 25px 25px 25px;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.flex div{
+    width: 200px;
+    height: 200px ;
+    margin: 10px;
 }
