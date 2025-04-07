@@ -9,12 +9,12 @@
     </head>
     <body>
         <div id="contener">
-            <a class="button" id="connexion" href="">Connexion</a><br>
+            <a class="button" id="connexion" href="page_connexion.php">Connexion</a><br>
             <h1>Bienvenue</h1><br>
-            <a href="">Addition</a><br>
-            <a href="">Soustraction</a><br>
-            <a href="">Multiplication</a><br>
-            <a href="">Division</a><br>
+            <a href="quiz/quiz.php?type=addition">Addition</a><br>
+            <a href="quiz/quiz.php?type=soustraction">Soustraction</a><br>
+            <a href="quiz/quiz.php?type=multiplication">Multiplication</a><br>
+            <a href="quiz/quiz.php?type=division">Division</a><br>
         </div>
     </body>
     </html>
