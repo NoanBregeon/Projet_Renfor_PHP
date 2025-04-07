@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
-        $stmt = $pdo->prepare("SELECT * FROM progression WHERE users.id")
-        header("Location: index.php");
+        $stmt = $pdo->prepare("SELECT * FROM progression WHERE users.id");
+        header("Location: dashboard.php");
         exit;
     } else {
         $message = "Nom d’utilisateur ou mot de passe incorrect.";
@@ -30,13 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
+    <link rel="stylesheet" href="styles\styles.css">
 </head>
 <body>
     <h2>Connexion</h2>
     <?php if ($message): ?>
         <p style="color:red"><?= ($message) ?></p>
     <?php endif; ?>
-    <form method="POST">
+    <form method="POST" class="connexion">
         <label>Nom d’utilisateur :</label><br>
         <input type="text" name="username" required><br><br>
         <label>Mot de passe :</label><br>
