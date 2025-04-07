@@ -4,17 +4,20 @@ require_once 'liaison\Bdd.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
+    $pseudomail = $_POST['pseudo'];
     $password = $_POST['password'];
-    $pdo = new PDO('username', 'password');
+    
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE pseudomail = :pseudomail');
+    $stmt->execute(['pseudomail' => $pseudomail]);
+    $user = $stmt->fetch();
 
+    if ($user && password_verify($password, $user['password'])) {
 
-    if ($email === 'admin@site.com' && $password === 'admin') {
-        $_SESSION['admin'] = true;
-        header('Location: index.php');
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: dashboard.php');
         exit;
     } else {
-        $error = "Identifiants incorrects.";
+        $error = 'Identifiant ou mot de passe incorrect.';
     }
 }
 
@@ -31,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <form method="POST">
     <h2>Connexion Admin</h2>
-    <input type="text" name="email" placeholder="Email admin" required><br>
+    <input type="text" name="pseudo" placeholder="Identifiant" required><br>
     <input type="password" name="password" placeholder="Mot de passe" required><br>
     <button type="submit">Se connecter</button>
 </form>
