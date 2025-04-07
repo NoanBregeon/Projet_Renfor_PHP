@@ -4,5 +4,8 @@
     border: 5px solid #0026fd;
     border-radius: 20px;
     font-size: 100px;
+}
+
+#connexion {
     float: right;
 }
