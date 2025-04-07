@@ -13,6 +13,9 @@ div {
     margin: 75px 0px;
 }
 
+.pasco {
+    float: none;
+}
 .button {
     margin: 75px 50px 75px 0px;
     background-color: #ff88dc;
