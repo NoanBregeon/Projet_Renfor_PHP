@@ -41,6 +41,14 @@ div {
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0);
 }
 
+.bloquer:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #272727;
+    box-shadow: 8px 13px #000000;
+    transition: all 0.3s ease;
+    color: white;
+}
+
 #connexion {
     margin: 20px;
     float: right;
