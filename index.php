@@ -35,9 +35,10 @@ if ($percent_global == 100) $couleur = "#00c200";
 <body>
     <div class="contener">
         <?php if (isset($_SESSION['nom'])): ?>
-            <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
-            <h1>Bienvenue <?= htmlspecialchars($_SESSION['nom']) ?> !</h1>
-
+            <div class="header">
+                <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
+                <h1>Bienvenue <?= htmlspecialchars($_SESSION['nom']) ?> !</h1>
+            </div>
             <div class="layout">
                 <!-- Colonne gauche : boutons de quiz -->
                 <div class="quiz-buttons">
