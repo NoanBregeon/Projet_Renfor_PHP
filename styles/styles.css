@@ -6,7 +6,8 @@ body {
 
 .header {
     margin: 0px auto;
-    background-color: grey;
+    background-color: rgb(121, 217, 230);
+    box-shadow: 5px 10px rgb(156, 221, 229);
 }
 
 .contener {
