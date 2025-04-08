@@ -123,6 +123,7 @@ div {
 }
 
 #connexion {
+    display: inline-block;
     margin: 20px;
     background-color: #7dff7d;
     border: 8px solid #00c200;
@@ -132,12 +133,13 @@ div {
     font-size: 50px;
     font-weight: bold;
     box-shadow: 6px 12px #ffde59;
+    transition: all 0.3s ease !important;
 }
 
 #connexion:hover {
-    transform: scale(1.1) rotate(2deg);
-    background-color: #5dff65;
-    box-shadow: 8px 13px #80ff59;
+    transform: scale(1.1) rotate(2deg) !important;
+    background-color: #3fff49;
+    box-shadow: 8px 13px #ffde59;
 }
 
 #deconnexion {
