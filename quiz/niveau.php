@@ -68,13 +68,13 @@ $resultats=$temp->fetch();
         <p><?php echo $resultats["nombre1"]; ?> </p>
         <p><?php 
         if($resultats["operation_type"]=="addition"){
-            echo '<img src="../styles/plus.png" alt="">';
+            echo '<img class="img" src="../styles/plus.png" alt="">';
         }elseif($resultats["operation_type"]=="soustraction"){
-            echo '<img src="../styles/remove.png" alt="">';
+            echo '<img class="img" src="../styles/remove.png" alt="">';
         }elseif($resultats["operation_type"]=="multiplication"){
-            echo '<img src="../styles/multiplication.png" alt="">';
+            echo '<img class="img" src="../styles/multiplication.png" alt="">';
         }elseif($resultats["operation_type"]=="division"){
-            echo '<img src="../styles/division.png" alt="">';
+            echo '<img class="img" src="../styles/division.png" alt="">';
         }
         ?></p>
         <P><?php echo $resultats["nombre2"]; ?></P>
