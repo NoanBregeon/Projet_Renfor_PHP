@@ -1,5 +1,5 @@
 <?php
-$niveau=$_GET["question"]+1;
+$niveau=$_GET["question"];
 $type=$_GET["type"];
 if($niveau-$_SESSION["dificulty"]>21){
     $_SESSION["dificulty"]=$_SESSION["dificulty"]+20;
@@ -53,9 +53,10 @@ $resultats=$temp->fetch();
         ?></p>
         <P><?php echo $resultats["nombre2"]; ?></P>
         <p>=</p>
-        <input type="number">
+        <input type="number" name="reponse" required >
         <input type="hidden" name="type" value=<?php echo '"'.$type.'"'; ?>>
         <input type="hidden" name="question" value=<?php echo '"'.$niveau.'"'; ?>>
+        
         <input type="submit" value="suivant">
         
 
