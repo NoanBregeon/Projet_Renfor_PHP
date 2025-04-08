@@ -36,26 +36,26 @@ if ($percent_global == 100) $couleur = "#00c200";
     <div class="contener">
         <?php if (isset($_SESSION['nom'])): ?>
             <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
-            <h1>Bienvenue <?= htmlspecialchars($_SESSION['nom']) ?> !</h1>
+            <h1>Bienvenue <?= ($_SESSION['nom']) ?> !</h1>
 
             <div class="layout">
                 <!-- Colonne gauche : boutons de quiz -->
                 <div class="quiz-buttons">
-                    <a class="button" href="quiz/quiz.php?type=addition">
+                    <a class="button_lien" href="quiz/quiz.php?type=addition">
                         Addition <img src="styles/plus.png" alt="plus" title="plus">
                     </a>
-                    <a class="button" href="quiz/quiz.php?type=soustraction">
+                    <a class="button_lien" href="quiz/quiz.php?type=soustraction">
                         Soustraction <img src="styles/remove.png" alt="soustraction" title="soustraction">
                     </a>
-                    <a class="button" href="quiz/quiz.php?type=multiplication">
+                    <a class="button_lien" href="quiz/quiz.php?type=multiplication">
                         Multiplication <img src="styles/multiplication.png" alt="multiplication" title="multiplication">
                     </a>
-                    <a class="button" href="quiz/quiz.php?type=division">
+                    <a class="button_lien" href="quiz/quiz.php?type=division">
                         Division <img src="styles/division.png" alt="division" title="division">
                     </a>
 
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a class="button" href="dashboard_admin.php">Admin</a>
+                        <a class="button" href="admin/dashboard_admin.php">Admin</a>
                     <?php endif; ?>
                 </div>
 
