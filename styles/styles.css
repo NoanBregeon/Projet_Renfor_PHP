@@ -268,17 +268,44 @@ img:hover {
 }
 
 .connexion-container {
-    text-align: center;
-    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    margin-top: 0;
+    padding: 20px;
 }
 
 .connexion-form {
-    display: inline-block;
+    display: block;
+    width: 450px;
+    max-width: 90%;
+    margin: 0 auto;
     text-align: left;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 25px;
     box-shadow: 0 0 20px #ccc;
+}
+
+#form-login {
+    width: 450px;
+    max-width: 90%;
+}
+
+/* Make the container and form titles consistent */
+#form-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-toggle {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
 }
 
 #form-register {
