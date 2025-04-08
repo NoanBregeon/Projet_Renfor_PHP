@@ -1,6 +1,7 @@
 <?php
 session_start();
 $progression=$_GET["type"];
+include("../liaison/maj_session.php")
 ?>
 <!DOCTYPE html>
 <html>
