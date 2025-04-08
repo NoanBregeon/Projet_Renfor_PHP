@@ -42,7 +42,6 @@ if ($percent_global == 100) $couleur = "#00c200";
             <div>
                 <img class="logo" src="styles/logo_grenouille.png" alt="logo" title="logo">
             </div>
-a
             <div class="layout">
                 <!-- Colonne gauche : boutons de quiz -->
                 <div class="quiz-buttons">
