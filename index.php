@@ -39,22 +39,24 @@ if ($percent_global == 100) $couleur = "#00c200";
                 <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
                 <h1>Bienvenue <?= ($_SESSION['nom']) ?> !</h1>
             </div>
-            
+            <div>
+                <img class="logo" src="styles/logo_grenouille.png" alt="logo" title="logo">
+            </div>
 
             <div class="layout">
                 <!-- Colonne gauche : boutons de quiz -->
                 <div class="quiz-buttons">
                     <a class="button_lien" href="quiz/quiz.php?type=addition">
-                        Addition <img src="styles/plus.png" alt="plus" title="plus">
+                        Addition <img class="img" src="styles/plus.png" alt="plus" title="plus">
                     </a>
                     <a class="button_lien" href="quiz/quiz.php?type=soustraction">
-                        Soustraction <img src="styles/remove.png" alt="soustraction" title="soustraction">
+                        Soustraction <img class="img" src="styles/remove.png" alt="soustraction" title="soustraction">
                     </a>
                     <a class="button_lien" href="quiz/quiz.php?type=multiplication">
-                        Multiplication <img src="styles/multiplication.png" alt="multiplication" title="multiplication">
+                        Multiplication <img class="img" src="styles/multiplication.png" alt="multiplication" title="multiplication">
                     </a>
                     <a class="button_lien" href="quiz/quiz.php?type=division">
-                        Division <img src="styles/division.png" alt="division" title="division">
+                        Division <img class="img" src="styles/division.png" alt="division" title="division">
                     </a>
 
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
