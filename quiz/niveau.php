@@ -2,9 +2,11 @@
 $niveau=$_GET["question"]+1;
 if($niveau>21){
     $_SESSION["dificulty"]=20;
+    $_SESSION["niv"]=2;
 }
 if($niveau>41){
     $_SESSION["dificulty"]=40;
+    $_SESSION["niv"]=3;
 }
 ?>
 
