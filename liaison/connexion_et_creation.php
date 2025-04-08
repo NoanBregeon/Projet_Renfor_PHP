@@ -93,7 +93,7 @@ if (isset($_POST['register'])) {
         <button type="submit" class="button">Se connecter</button>
         <div class="form-toggle">
             <div><button class="button_form" id="toggle-button">Créer un compte ✍️</button></div>
-            <div><a href="index.php" class="button_form">⬅ Retour</a></div>
+            <div><a href="../index.php" class="button_form">⬅ Retour</a></div>
         </div>
     </form>
 
