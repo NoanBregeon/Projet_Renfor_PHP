@@ -17,7 +17,7 @@ session_start();
     <body>
         <div class="contener">
             <?php if(isset($_SESSION['nom'])): ?>
-            <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnection</a><br>
+            <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
             <h1>Bienvenue</h1><br>
             <div>
                 <a class="button" href="quiz/quiz.php?type=addition">Addition <img src="styles/plus.png" alt="plus" title="plus"></a>
@@ -34,7 +34,7 @@ session_start();
             <?php else: ?>
                 <h1>Bienvenue</h1>
                 <div>
-                    <a class="button" id="connexion" href="liaison/page_connexion.php">Connection</a><br>
+                    <a class="button" id="connexion" href="liaison/page_connexion.php">Connexion</a><br>
                 </div>
                 <?php endif; ?>
         </div>
