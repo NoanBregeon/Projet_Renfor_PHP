@@ -3,9 +3,16 @@ session_start();
 require_once 'liaison/Bdd.php';
 require_once 'liaison/maj_session.php';
 
+$addition = $_SESSION['addition'] ?? 0;
+$soustraction = $_SESSION['soustraction'] ?? 0;
+$multiplication = $_SESSION['multiplication'] ?? 0;
+$division = $_SESSION['division'] ?? 0;
+
+$total_fait = $addition + $soustraction + $multiplication + $division;
+
+
 // Total attendu : 240 questions (60 par opération)
 $total_questions = 240;
-$total_fait = $_SESSION['addition'] + $_SESSION['soustraction'] + $_SESSION['multiplication'] + $_SESSION['division'];
 $percent_global = min(100, round(($total_fait / $total_questions) * 100));
 
 // Couleur dynamique de la barre
