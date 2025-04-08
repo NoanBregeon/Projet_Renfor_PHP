@@ -1,5 +1,14 @@
 <?php
-$niveau=$_GET["question"];
+$niveau;
+if($_GET["question"]==0){
+    header('Location: quiz.php?type=addition&question=1');
+}
+if (!isset($_GET["reponse"])){
+    $niveau=$_GET["question"];
+    $_SESSION["niveau"]=$niveau;
+}else{
+    $niveau=$_SESSION["niveau"];
+}
 $type=$_GET["type"];
 if($niveau-$_SESSION["dificulty"]>21){
     $_SESSION["dificulty"]=$_SESSION["dificulty"]+20;
@@ -53,11 +62,25 @@ $resultats=$temp->fetch();
         ?></p>
         <P><?php echo $resultats["nombre2"]; ?></P>
         <p>=</p>
-        <input type="number" name="reponse" required >
+        <input type="number" name="reponse" required value=<?php if(isset($_GET["reponse"])){echo '"'.$_GET["reponse"].'"';} ?> >
         <input type="hidden" name="type" value=<?php echo '"'.$type.'"'; ?>>
         <input type="hidden" name="question" value=<?php echo '"'.$niveau.'"'; ?>>
-        
-        <input type="submit" value="suivant">
+        <?php
+        if (isset($_GET["reponse"])){
+            if($_GET["reponse"]==$resultats["correct_answer"]){
+                echo '<div class="quiz">bien jouer</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
+                $_SESSION["niveau"]=$_GET["question"]+1;
+
+            }else{
+                echo '<div class="quiz">erreur la bonne reponse attendu est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input class="button" type="submit" value=":(">';
+                $_SESSION["niveau"]=$_GET["question"]-1;   
+            }
+
+            if(isset($_GET["suivant"])){
+                header('Location: quiz.php?type='.$type.'&question='.$_SESSION["niveau"]);
+            }
+        }
+        ?>
         
 
     </form>
