@@ -1,6 +1,7 @@
 <?php
 session_start();
 $progression=$_GET["type"];
+include("../liaison/maj_session.php")
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +35,7 @@ $progression=$_GET["type"];
                 echo '</div>';
             }
             if(isset($_GET["type"]) && isset($_GET["niv"])){
-                include("addition.php");
+                include("select_niv.php");
             }
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';

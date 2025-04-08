@@ -28,6 +28,7 @@ h1 {
     box-shadow: 5px 10px #ffde59;
     padding: 15px 30px;
     transition: all 0.3s ease;
+    align-content: center;
 }
 
 .button:hover {
