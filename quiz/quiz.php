@@ -2,6 +2,8 @@
 session_start();
 $progression=$_GET["type"];
 include("../liaison/maj_session.php")
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,6 +38,7 @@ include("../liaison/maj_session.php")
             }
             if(isset($_GET["type"]) && isset($_GET["niv"]) && !isset($_GET["question"])){
                 include("select_niv.php");
+                $_SESSION["niv"]=$_GET["niv"];
             }elseif(isset($_GET["type"]) && !isset($_GET["niv"]) && isset($_GET["question"])){
                 include("niveau.php");
             }
