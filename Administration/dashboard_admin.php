@@ -101,6 +101,6 @@ $users = $stmt->fetchAll();
         </tbody>
     </table>
 
-    <a class="retour" href="index.php">⬅ Retour à l'accueil</a>
+    <a class="retour" href="../index.php">⬅ Retour à l'accueil</a>
 </body>
 </html>
