@@ -282,6 +282,10 @@ img:hover {
     height: 650px;
 }
 
+#form-register {
+    width: 450px;
+}
+
 .connexion-form input[type="text"],
 .connexion-form input[type="password"] {
     width: 100%;
