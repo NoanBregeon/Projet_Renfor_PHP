@@ -20,18 +20,18 @@ include("../liaison/maj_session.php")
             if(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"])){
             echo '<h2>Choisi ta difficulté</h2>';
             echo '<div class="choix du niveau">
-                <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">facile<img src="../styles/cadenas-ouvert.png" alt=""></a></div>';
+                <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">facile<img class="img" src="../styles/cadenas-ouvert.png" alt=""></a></div>';
                 if ($_SESSION[$progression] >= 20){
-                    echo '<div><a class="button moyen" href="quiz.php?type='.$_GET["type"].'&niv=2">moyen<img src="../styles/cadenas-ouvert.png" alt=""></a></div>';
+                    echo '<div><a class="button moyen" href="quiz.php?type='.$_GET["type"].'&niv=2">moyen<img class="img" src="../styles/cadenas-ouvert.png" alt=""></a></div>';
                 }else{
 
-                    echo '<div><a class="button bloquer moyen" href="quiz.php?type='.$_GET["type"].'">moyen<img src="../styles/cadenas.png" alt=""></a></div>';
+                    echo '<div><a class="button bloquer moyen" href="quiz.php?type='.$_GET["type"].'">moyen<img class="img" src="../styles/cadenas.png" alt=""></a></div>';
                 }
                 if ($_SESSION[$progression] >= 40){
-                    echo '<div><a class="button difficile" href="quiz.php?type='.$_GET["type"].'&niv=3">difficile<img src="../styles/cadenas-ouvert.png" alt=""></a></div>';
+                    echo '<div><a class="button difficile" href="quiz.php?type='.$_GET["type"].'&niv=3">difficile<img class="img" src="../styles/cadenas-ouvert.png" alt=""></a></div>';
                 }else{
                     
-                    echo '<div><a class="button bloquer difficile" href="quiz.php?type='.$_GET["type"].'">difficile<img src="../styles/cadenas.png" alt=""></a></div>';
+                    echo '<div><a class="button bloquer difficile" href="quiz.php?type='.$_GET["type"].'">difficile<img class="img" src="../styles/cadenas.png" alt=""></a></div>';
                 }
                 
                 echo '</div>';
