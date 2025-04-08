@@ -1,62 +1,82 @@
 <?php
 session_start();
 
-// Initialisation du score et du niveau si nécessaire
-if (!isset($_SESSION['infini_score'])) {
-    $_SESSION['infini_score'] = 0;
-    $_SESSION['infini_step'] = 1;
+$type = $_GET['type'] ?? '';
+$valid_types = ['addition', 'soustraction', 'multiplication', 'division'];
+
+if (!in_array($type, $valid_types)) {
+    echo "<p>❌ Type d'opération invalide.</p>";
+    exit;
 }
 
-// Génération de la question
-function genererQuestion($niveau) {
-    $operation = ['+', '-', '×', '÷'][rand(0, 3)];
+// Initialiser ou réinitialiser si demandé
+if (isset($_GET['reset'])) {
+    $_SESSION['infini'][$type]['score'] = 0;
+    $_SESSION['infini'][$type]['niveau'] = 1;
+    header("Location: infini.php?type=" . urlencode($type));
+    exit;
+}
 
-    // Ajuster la difficulté selon le niveau
-    $max = min(10 + $niveau * 2, 100); // niveau max 100
+if (!isset($_SESSION['infini'][$type])) {
+    $_SESSION['infini'][$type] = ['score' => 0, 'niveau' => 1];
+}
+
+$niveau = $_SESSION['infini'][$type]['niveau'];
+
+// Génération de la question
+function generer($type, $niveau) {
+    $max = min(10 + $niveau * 2, 100);
     $min = 1;
 
     do {
         $a = rand($min, $max);
         $b = rand($min, $max);
-    } while ($operation === '÷' && ($b === 0 || $a % $b !== 0)); // pour division entière
+    } while ($type === 'division' && ($b === 0 || $a % $b !== 0));
 
-    return compact('a', 'b', 'operation');
+    return [$a, $b];
 }
 
-// Vérification de la réponse
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_answer = (int)$_POST['answer'];
     $a = (int)$_POST['a'];
     $b = (int)$_POST['b'];
-    $operation = $_POST['operation'];
+    $type = $_POST['type'];
 
-    $correct = match($operation) {
-        '+' => $a + $b,
-        '-' => $a - $b,
-        '×' => $a * $b,
-        '÷' => (int)($a / $b),
+    $correct = match($type) {
+        'addition' => $a + $b,
+        'soustraction' => $a - $b,
+        'multiplication' => $a * $b,
+        'division' => (int)($a / $b),
     };
 
     if ($user_answer === $correct) {
-        $_SESSION['infini_score']++;
-        $_SESSION['infini_step']++;
+        $_SESSION['infini'][$type]['score']++;
+        $_SESSION['infini'][$type]['niveau']++;
         $message = "✅ Bonne réponse !";
     } else {
         $message = "❌ Mauvaise réponse. La bonne réponse était $correct.";
-        $_SESSION['infini_step'] = 1; // reset
+        $_SESSION['infini'][$type]['niveau'] = 1;
     }
+
+    $niveau = $_SESSION['infini'][$type]['niveau'];
 }
 
-$niveau_actuel = (int)$_SESSION['infini_step'];
-$question = genererQuestion($niveau_actuel);
+[$a, $b] = generer($type, $niveau);
+
+$symbol = match($type) {
+    'addition' => '+',
+    'soustraction' => '-',
+    'multiplication' => '×',
+    'division' => '÷',
+};
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz Infini</title>
+    <title>Infini <?= ucfirst($type) ?></title>
     <link rel="stylesheet" href="../layout/styles.css">
     <style>
         .infini-container {
@@ -85,26 +105,26 @@ $question = genererQuestion($niveau_actuel);
 </head>
 <body>
 <div class="infini-container">
-    <h1>Mode Infini 🔁</h1>
-    <div class="score">Score actuel : <?= $_SESSION['infini_score'] ?></div>
+    <h1>Mode Infini : <?= ucfirst($type) ?> 🔁</h1>
+    <div class="score">Score actuel : <?= $_SESSION['infini'][$type]['score'] ?></div>
 
     <?php if ($message): ?>
         <p><strong><?= htmlspecialchars($message) ?></strong></p>
     <?php endif; ?>
 
     <form method="POST">
-        <div class="question"><?= $question['a'] . ' ' . $question['operation'] . ' ' . $question['b'] ?> = ?</div>
-        <input type="hidden" name="a" value="<?= $question['a'] ?>">
-        <input type="hidden" name="b" value="<?= $question['b'] ?>">
-        <input type="hidden" name="operation" value="<?= $question['operation'] ?>">
+        <div class="question"><?= "$a $symbol $b = ?" ?></div>
+        <input type="hidden" name="a" value="<?= $a ?>">
+        <input type="hidden" name="b" value="<?= $b ?>">
+        <input type="hidden" name="type" value="<?= $type ?>">
         <input type="number" name="answer" required>
         <br><br>
         <button type="submit" class="button">Valider</button>
     </form>
 
     <br>
-    <a href="reset_infini.php" class="button">🔄 Réinitialiser</a>
-    <a href="../index.php" class="button">⬅ Retour</a>
+    <a href="infini.php?type=<?= $type ?>&reset=1" class="button">🔄 Réinitialiser</a>
+    <a href="quiz.php?type=<?= $type ?>" class="button">⬅ Retour au quiz</a>
 </div>
 </body>
 </html>
