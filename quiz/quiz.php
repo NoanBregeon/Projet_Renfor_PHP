@@ -14,7 +14,7 @@ $progression=$_GET["type"];
 <body>
     <div class="contener">
         <?php
-            if(isset($_GET["type"]) && !isset($_GET["niv"])){
+            if(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"])){
             echo '<h2>Choisi ta difficulté</h2>';
             echo '<div class="choix du niveau">
                 <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">facile<img src="../styles/cadenas-ouvert.png" alt=""></a></div>';
