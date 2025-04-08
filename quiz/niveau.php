@@ -1,4 +1,8 @@
 <?php
+if($_SESSION["niv"]==1){$_SESSION["dificulty"]=0;}
+elseif($_SESSION["niv"]==2){$_SESSION["dificulty"]=20;}
+elseif($_SESSION["niv"]==3){$_SESSION["dificulty"]=40;}
+$x=0;
 $niveau;
 if($_GET["question"]==0){
     header('Location: quiz.php?type=addition&question=1');
@@ -21,16 +25,23 @@ if($niveau-$_SESSION["dificulty"]>21){
 }
 if($niveau>60){
     $type="soustraction";
+    $x=60;
 }
 if($niveau>120){
     $type="multiplication";
+    $x=120;
 }
 if($niveau>180){
     $type="division";
+    $x=180;
 }
 if($niveau>240){
     $type="fin";
 }
+echo $_SESSION["niv"];
+echo $x;
+echo $_SESSION["dificulty"];
+$x=$x+$_SESSION["dificulty"];
 
 
 $sql= 'SELECT * FROM questions WHERE id='.$_GET["question"];
@@ -47,7 +58,7 @@ $resultats=$temp->fetch();
 </head>
 <body>
     <form action="quiz.php">
-        <h2>question numero : <?php echo $_GET["question"]-$_SESSION["dificulty"] ?></h2>
+        <h2>question numero : <?php echo $_GET["question"]-$x; ?></h2>
         <p><?php echo $resultats["nombre1"]; ?> </p>
         <p><?php 
         if($resultats["operation_type"]=="addition"){
@@ -70,9 +81,14 @@ $resultats=$temp->fetch();
             if($_GET["reponse"]==$resultats["correct_answer"]){
                 echo '<div class="quiz">bien jouer</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
                 $_SESSION["niveau"]=$_GET["question"]+1;
+                if($_GET["question"]==$_SESSION[$_GET["type"]]){
+                    $_SESSION[$_GET["type"]]=$_SESSION[$_GET["type"]]+1;
+                    $sql2= 'UPDATE users SET progression_'.$_GET["type"].'='.$_SESSION[$_GET["type"]].' WHERE id='.$_SESSION["user_id"];
+                    $pdo->exec($sql2);
+                }
 
             }else{
-                echo '<div class="quiz">erreur la bonne reponse attendu est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input class="button" type="submit" value=":(">';
+                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input class="button" type="submit" value=":(">';
                 $_SESSION["niveau"]=$_GET["question"]-1;   
             }
 
