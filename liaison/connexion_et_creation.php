@@ -91,6 +91,10 @@ if (isset($_POST['register'])) {
         <label>Mot de passe :</label><br>
         <input type="password" name="password_login" required><br>
         <button type="submit" class="button">Se connecter</button>
+        <div class="form-toggle">
+            <div><button class="button_form" id="toggle-button">Créer un compte ✍️</button></div>
+            <div><a href="index.php" class="button_form">⬅ Retour</a></div>
+        </div>
     </form>
 
     <!-- Formulaire Création -->
@@ -108,13 +112,13 @@ if (isset($_POST['register'])) {
         <label>Confirmer le mot de passe :</label><br>
         <input type="password" name="password_confirm" required><br>
         <button type="submit" class="button">Créer le compte</button>
+        <div class="form-toggle">
+            <div><a href="index.php" class="button_form">⬅ Retour</a></div>
+        </div>
     </form>
 
     <!-- Boutons de bas de page -->
-    <div class="form-toggle">
-        <a href="index.php" class="button">⬅ Retour</a>
-        <button class="button" id="toggle-button">Créer un compte ✍️</button>
-    </div>
+    
 </div>
 
 <script>
