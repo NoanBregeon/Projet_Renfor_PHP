@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'liaison/Bdd.php';
-require_once 'liaison/maj_session.php';
+require_once '../liaison/Bdd.php';
+require_once '../liaison/maj_session.php';
 
 // Sécurité : vérifier si l'utilisateur est bien admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
@@ -11,8 +11,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 // Récupération de tous les utilisateurs sauf les admins
 $stmt = $pdo->prepare("SELECT username, progression_addition, progression_soustraction, progression_multiplication, progression_division 
-                       FROM users 
-                       WHERE role != 'admin'");
+FROM users WHERE role != 'admin'");
 $stmt->execute();
 $users = $stmt->fetchAll();
 ?>

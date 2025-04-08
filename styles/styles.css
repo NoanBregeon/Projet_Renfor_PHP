@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: 60px;
-    margin-top: 40px;
+    margin-top: 0px;
     flex-wrap: wrap;
 }
 
@@ -60,10 +60,12 @@ body {
 .barre-texte-verticale {
     font-weight: bold;
     text-align: center;
+    margin-top: 0px;
 }
 
 h1 {
     font-size: 110px;
+    margin: 0px;
 }
 
 h2 {
@@ -277,4 +279,17 @@ img:hover {
 }
 .question{
     text-decoration: none;
+}
+.button_lien {
+    margin: 0px;
+    background-color: #ff88dc;
+    border: 5px solid rgb(255, 192, 103);
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #5e17eb;
+    box-shadow: 5px 10px #ffde59;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+    align-content: center;
 }
