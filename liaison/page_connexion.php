@@ -15,16 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérification du mot de passe
     if ($user && ($password === $user['password'])) {
-        // Stockage des infos utilisateur
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['nom'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
 
-        // Stockage direct de la progression (puisqu'elle est dans la table users maintenant)
-        $_SESSION['addition'] = $user['progression_addition'];
-        $_SESSION['soustraction'] = $user['progression_soustraction'];
-        $_SESSION['multiplication'] = $user['progression_multiplication'];
-        $_SESSION['division'] = $user['progression_division'];
+        // Mise à jour de toute la session depuis la base (nom, role, progression, etc.)
+        require_once 'maj_session.php';
 
         // Redirection
         header("Location: ../index.php");
@@ -45,18 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="connexion-container">
         <h2>Connexion</h2>
-
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <p>✅ Vous êtes déjà connecté en tant que <strong><?= htmlspecialchars($_SESSION['nom']) ?></strong>.</p>
-            <a href="deconnexion.php" class="button">Se déconnecter</a>
-
-        <?php else: ?>
-            <?php if (isset($_GET['inscription']) && $_GET['inscription'] === 'ok'): ?>
-                <p style="color:green">✅ Compte créé avec succès ! Vous pouvez vous connecter.</p>
-            <?php endif; ?>
-
             <?php if ($message): ?>
-                <p style="color:red"><?= htmlspecialchars($message) ?></p>
+                <p style="color:red"><?= ($message) ?></p>
             <?php endif; ?>
 
             <form method="POST" class="connexion-form">
@@ -73,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="..\index.php" class="button">⬅ Retour</a>
                 <a href="creer_compte.php" class="button">Créer un compte ✍️</a>
             </div>
-        <?php endif; ?>
     </div>
 </body>
 </html>
