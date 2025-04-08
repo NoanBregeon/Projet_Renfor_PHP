@@ -16,6 +16,10 @@ include("../liaison/maj_session.php")
 </head>
 <body>
     <div class="contener">
+        <div class="header">
+            <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
+            <h1>Bienvenue <?= ($_SESSION['nom']) ?> !</h1>
+        </div>
         <?php
             if(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"])){
             echo '<h2>Choisi ta difficulté</h2>';
@@ -50,6 +54,7 @@ include("../liaison/maj_session.php")
                 echo '<a href=".." class="button retour">retour</a>';
             }
                 ?>
+        <div class="footer"></div>
     </div>
 </body>
 </html>
