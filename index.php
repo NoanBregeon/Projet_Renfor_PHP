@@ -79,7 +79,7 @@ if ($percent_global == 100) $couleur = "#00c200";
         <?php else: ?>
             <h1>Bienvenue</h1>
             <div>
-                <a class="button" id="connexion" href="liaison/page_connexion.php">Connexion</a><br>
+                <a class="button" id="connexion" href="liaison/connexion_et_creation.php">Connexion</a><br>
             </div>
         <?php endif; ?>
         <div class="footer"></div>
