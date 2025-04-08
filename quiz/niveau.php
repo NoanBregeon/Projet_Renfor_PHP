@@ -1,7 +1,4 @@
 <?php
-if($_SESSION["niv"]==1){$_SESSION["dificulty"]=0;}
-elseif($_SESSION["niv"]==2){$_SESSION["dificulty"]=20;}
-elseif($_SESSION["niv"]==3){$_SESSION["dificulty"]=40;}
 $x=0;
 $niveau;
 if($_GET["question"]==0){
@@ -17,30 +14,39 @@ $type=$_GET["type"];
 if($niveau-$_SESSION["dificulty"]>21){
     $_SESSION["dificulty"]=$_SESSION["dificulty"]+20;
     if($_SESSION["niv"]<1){
-    $_SESSION["niv"]=$_SESSION["niv"]+1;
+        $_SESSION["niv"]=$_SESSION["niv"]+1;
     }else{
         $_SESSION["niv"]=1;
     }
-
+    
 }
+if($_SESSION["niv"]==1){$_SESSION["dificulty"]=0;}
+elseif($_SESSION["niv"]==2){$_SESSION["dificulty"]=20;}
+elseif($_SESSION["niv"]==3){$_SESSION["dificulty"]=40;}
 if($niveau>60){
     $type="soustraction";
     $x=60;
+    if($niveau==61){
+        $_SESSION["dificulty"]=0;
+    }
 }
 if($niveau>120){
     $type="multiplication";
     $x=120;
+    if($niveau==121){
+        $_SESSION["dificulty"]=0;
+    }
 }
 if($niveau>180){
     $type="division";
     $x=180;
+    if($niveau==181){
+        $_SESSION["dificulty"]=0;
+    }
 }
 if($niveau>240){
     $type="fin";
 }
-echo $_SESSION["niv"];
-echo $x;
-echo $_SESSION["dificulty"];
 $x=$x+$_SESSION["dificulty"];
 
 
@@ -81,7 +87,7 @@ $resultats=$temp->fetch();
             if($_GET["reponse"]==$resultats["correct_answer"]){
                 echo '<div class="quiz">bien jouer</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
                 $_SESSION["niveau"]=$_GET["question"]+1;
-                if($_GET["question"]==$_SESSION[$_GET["type"]]){
+                if($_GET["question"]-$x==$_SESSION[$_GET["type"]]){
                     $_SESSION[$_GET["type"]]=$_SESSION[$_GET["type"]]+1;
                     $sql2= 'UPDATE users SET progression_'.$_GET["type"].'='.$_SESSION[$_GET["type"]].' WHERE id='.$_SESSION["user_id"];
                     $pdo->exec($sql2);
