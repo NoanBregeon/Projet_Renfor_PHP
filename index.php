@@ -56,6 +56,9 @@ if ($percent_global == 100) $couleur = "#00c200";
                     <a class="button_lien" href="quiz/quiz.php?type=division">
                         Division <img src="styles/division.png" alt="division" title="division">
                     </a>
+                    <a class="button_lien" href="quiz/infini.php">
+                        Mode Infini <img src="styles/infini.png" alt="mode infini" title="mode infini">
+                    </a>
 
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <a class="button" href="admin/dashboard_admin.php">Admin</a>
