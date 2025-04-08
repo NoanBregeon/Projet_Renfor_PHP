@@ -36,7 +36,6 @@ $progression=$_GET["type"];
             if(isset($_GET["type"]) && isset($_GET["niv"])){
                 include("addition.php");
             }
-
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';
             }else{

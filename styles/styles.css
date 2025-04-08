@@ -13,6 +13,10 @@ div {
     margin: 75px 0px;
 }
 
+h1 {
+    font-size: 300px;
+}
+
 .button {
     margin: 75px 50px 75px 0px;
     background-color: #ff88dc;
@@ -96,10 +100,9 @@ div {
 }
 
 .retour {
-    float: right;
     position: fixed;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
 }
 
 .bloquer {
