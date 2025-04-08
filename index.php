@@ -23,62 +23,6 @@ if ($percent_global == 100) $couleur = "#00c200";
     <title>Gabou quiz</title>
     <link rel="stylesheet" href="styles/styles.css">
     <style>
-        .layout {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 60px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .quiz-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .progress-global {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .barre-globale-verticale {
-            width: 40px;
-            height: 250px;
-            background-color: #e0e0e0;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 3px 5px #ffde59;
-            display: flex;
-            flex-direction: column-reverse; /* Important pour remplissage de bas en haut */
-        }   
-
-        .barre-globale-remplie-verticale {
-            width: 100%;
-            transition: height 0.5s ease;
-            background-color: #5e17eb;
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding-bottom: 5px;
-            margin: 0;
-        }
-
-
-        .barre-texte-verticale {
-            font-weight: bold;
-            text-align: center;
-        }
-        .button{
-            margin: 0px 0;
-        }
     </style>
 </head>
 <body>
@@ -112,8 +56,8 @@ if ($percent_global == 100) $couleur = "#00c200";
                 <div class="progress-global">
                     <div class="barre-globale-verticale">
                         <div class="barre-globale-remplie-verticale"
-                             style="height: <?= $percent_global ?>%; background-color: <?= $couleur ?>;">
-                             <?= $percent_global ?>%
+                            style="height: <?= $percent_global ?>%; background-color: <?= $couleur ?>;">
+                            <?= $percent_global ?>%
                         </div>
                     </div>
                     <div class="barre-texte-verticale">
