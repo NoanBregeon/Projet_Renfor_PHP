@@ -34,11 +34,15 @@ include("../liaison/maj_session.php")
                 
                 echo '</div>';
             }
-            if(isset($_GET["type"]) && isset($_GET["niv"])){
+            if(isset($_GET["type"]) && isset($_GET["niv"]) && !isset($_GET["question"])){
                 include("select_niv.php");
+            }elseif(isset($_GET["type"]) && !isset($_GET["niv"]) && isset($_GET["question"])){
+                include("niveau.php");
             }
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';
+            }elseif(isset($_GET["question"])){
+                echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">retour</a>';
             }else{
                 echo '<a href=".." class="button retour">retour</a>';
             }
