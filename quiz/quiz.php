@@ -37,8 +37,8 @@ include("../liaison/maj_session.php")
                 echo '</div>';
             }
             if(isset($_GET["type"]) && isset($_GET["niv"]) && !isset($_GET["question"])){
-                include("select_niv.php");
                 $_SESSION["niv"]=$_GET["niv"];
+                include("select_niv.php");
             }elseif(isset($_GET["type"]) && !isset($_GET["niv"]) && isset($_GET["question"])){
                 include("niveau.php");
             }
