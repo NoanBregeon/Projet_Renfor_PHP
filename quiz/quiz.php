@@ -42,7 +42,7 @@ include("../liaison/maj_session.php")
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';
             }elseif(isset($_GET["question"])){
-                echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">retour</a>';
+                echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">menus</a>';
             }else{
                 echo '<a href=".." class="button retour">retour</a>';
             }
