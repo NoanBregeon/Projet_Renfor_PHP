@@ -35,7 +35,7 @@ include("../liaison/maj_session.php")
                 echo '</div>';
             }
             if(isset($_GET["type"]) && isset($_GET["niv"])){
-                include("addition.php");
+                include("select_niv.php");
             }
 
             if(isset($_GET["niv"])){
