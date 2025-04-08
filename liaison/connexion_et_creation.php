@@ -60,7 +60,6 @@ if (isset($_POST['register'])) {
     <meta charset="UTF-8">
     <title>Connexion / Création</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/connexion.css">
     <style>
         .hidden { display: none; }
         .form-toggle { margin-top: 20px; display: flex; gap: 15px; justify-content: center; }
