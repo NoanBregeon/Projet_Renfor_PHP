@@ -20,16 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['nom'] = $user['username'];
         $_SESSION['role'] = $user['role'];
 
-        // Récupération de la progression
-        $stmt = $pdo->prepare("SELECT * FROM progression WHERE id_pseudo = ?");
-        $stmt->execute([$user['id']]);
-        $progression = $stmt->fetch();
-
-        // Stockage dans la session
-        $_SESSION['addition'] = $progression['progression_addition'];
-        $_SESSION['soustraction'] = $progression['progression_soustraction'];
-        $_SESSION['multiplication'] = $progression['progression_multiplication'];
-        $_SESSION['division'] = $progression['progression_division'];
+        // Stockage direct de la progression (puisqu'elle est dans la table users maintenant)
+        $_SESSION['addition'] = $user['progression_addition'];
+        $_SESSION['soustraction'] = $user['progression_soustraction'];
+        $_SESSION['multiplication'] = $user['progression_multiplication'];
+        $_SESSION['division'] = $user['progression_division'];
 
         // Redirection
         header("Location: ../index.php");
