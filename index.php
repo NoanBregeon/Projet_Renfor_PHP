@@ -1,7 +1,6 @@
 <?php
-
+//Appelle la session
 session_start();
-
 
 ?>
 
