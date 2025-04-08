@@ -65,7 +65,8 @@ $resultats=$temp->fetch();
 <body>
     <form action="quiz.php">
         <h2>Question numero : <?php echo $_GET["question"]-$x; ?></h2>
-        <p class="calcul"><?php echo $resultats["nombre1"]; ?> </p>
+        <div class="calcul_div">
+            <p class="calcul"><?php echo $resultats["nombre1"]; ?></p>
         <p><?php 
         if($resultats["operation_type"]=="addition"){
             echo '<img class="img" src="../styles/plus.png" alt="">';
@@ -79,9 +80,11 @@ $resultats=$temp->fetch();
         ?></p>
         <p class="calcul"><?php echo $resultats["nombre2"]; ?></p>
         <p class="calcul">=</p>
-        <input type="number" name="reponse" required value=<?php if(isset($_GET["reponse"])){echo '"'.$_GET["reponse"].'"';} ?> >
+        <input class="barre" type="number" name="reponse" required value=<?php if(isset($_GET["reponse"])){echo '"'.$_GET["reponse"].'"';} ?> >
         <input type="hidden" name="type" value=<?php echo '"'.$type.'"'; ?>>
         <input type="hidden" name="question" value=<?php echo '"'.$niveau.'"'; ?>>
+        </div>
+        
         <?php
         if (isset($_GET["reponse"])){
             if($_GET["reponse"]==$resultats["correct_answer"]){

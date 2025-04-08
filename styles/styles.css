@@ -60,8 +60,23 @@ div {
     flex-wrap: wrap;
 }
 
+.calcul_div {
+    border: 5px solid black;
+    border-radius: 25px;
+    width: 25%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+}
+
+.barre {
+    width: 50%;
+    height: auto;
+}
+
 .calcul{
-    
+    font-size: 50px;
 }
 
 .quiz-buttons {
