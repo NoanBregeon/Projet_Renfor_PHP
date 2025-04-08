@@ -28,7 +28,7 @@ if ($percent_global == 100) $couleur = "#00c200";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabou quiz</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css?v=0">
     <style>
     </style>
 </head>
