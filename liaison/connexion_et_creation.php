@@ -66,11 +66,9 @@ if (isset($_POST['register'])) {
     <link rel="stylesheet" href="../styles/connexion.css">
     <style>
         .hidden { display: none; }
-        .form-toggle { margin-top: 20px; }
-        .form-toggle button {
-            margin-right: 10px;
-        }
+        .form-toggle { margin-top: 20px; display: flex; gap: 15px; justify-content: center; }
     </style>
+    <script src="../scripts/form_switch.js" defer></script>
 </head>
 <body>
 <div class="connexion-container">
@@ -91,10 +89,6 @@ if (isset($_POST['register'])) {
         <label>Mot de passe :</label><br>
         <input type="password" name="password_login" required><br>
         <button type="submit" class="button">Se connecter</button>
-        <div class="form-toggle">
-            <div><button class="button_form" id="toggle-button">Créer un compte ✍️</button></div>
-            <div><a href="../index.php" class="button_form">⬅ Retour</a></div>
-        </div>
     </form>
 
     <!-- Formulaire Création -->
@@ -112,39 +106,15 @@ if (isset($_POST['register'])) {
         <label>Confirmer le mot de passe :</label><br>
         <input type="password" name="password_confirm" required><br>
         <button type="submit" class="button">Créer le compte</button>
-        <div class="form-toggle">
-            <div><a href="index.php" class="button_form">⬅ Retour</a></div>
-        </div>
     </form>
 
-    <!-- Boutons de bas de page -->
-    
+    <!-- Boutons sous les formulaires -->
+    <div class="form-toggle">
+    <a href="../index.php" class="button_form">⬅ Retour</a>
+        <button type="button" class="button_form" id="toggle-button" data-state="<?= $active_form === 'register' ? 'register' : 'login' ?>">
+            <?= $active_form === 'register' ? 'Se connecter 🔐' : 'Créer un compte ✍️' ?>
+        </button>
+    </div>
 </div>
-
-<script>
-    const toggleBtn = document.getElementById('toggle-button');
-    const formLogin = document.getElementById('form-login');
-    const formRegister = document.getElementById('form-register');
-    const formTitle = document.getElementById('form-title');
-
-    let showingRegister = <?= $active_form === 'register' ? 'true' : 'false' ?>;
-
-    toggleBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        showingRegister = !showingRegister;
-
-        if (showingRegister) {
-            formLogin.style.display = 'none';
-            formRegister.style.display = 'block';
-            formTitle.innerText = 'Créer un compte ✍️';
-            toggleBtn.innerText = 'Se connecter 🔐';
-        } else {
-            formLogin.style.display = 'block';
-            formRegister.style.display = 'none';
-            formTitle.innerText = 'Connexion 🔐';
-            toggleBtn.innerText = 'Créer un compte ✍️';
-        }
-    });
-</script>
 </body>
 </html>
