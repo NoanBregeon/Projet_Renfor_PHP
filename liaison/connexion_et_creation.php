@@ -110,10 +110,10 @@ if (isset($_POST['register'])) {
 
     <!-- Boutons sous les formulaires -->
     <div class="form-toggle">
+        <a href="index.php" class="button_form">⬅ Retour</a>
         <button type="button" class="button_form" id="toggle-button" data-state="<?= $active_form === 'register' ? 'register' : 'login' ?>">
             <?= $active_form === 'register' ? 'Se connecter 🔐' : 'Créer un compte ✍️' ?>
         </button>
-        <a href="index.php" class="button_form">⬅ Retour</a>
     </div>
 </div>
 </body>
