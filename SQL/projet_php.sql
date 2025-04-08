@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 08 avr. 2025 à 06:43
+-- Généré le : mar. 08 avr. 2025 à 07:51
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -304,36 +304,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `progression_multiplication` int DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `answered_at`, `progression_addition`, `progression_soustraction`, `progression_division`, `progression_multiplication`) VALUES
-(1, 'Admin', 'Admin1234', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1),
-(2, 'TEST', 'TEST', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1);
-
---
--- Déclencheurs `users`
---
-DROP TRIGGER IF EXISTS `after_user_insert`;
-DELIMITER $$
-CREATE TRIGGER `after_user_insert` AFTER INSERT ON `users` FOR EACH ROW BEGIN
-  INSERT INTO progression (
-    id_pseudo, 
-    progression_addition, 
-    progression_soustraction, 
-    progression_division, 
-    progression_multiplication
-  )
-  VALUES (
-    NEW.id, 
-    1, 1, 1, 1
-  );
-END
-$$
-DELIMITER ;
+(1, 'Admin', 'Admin1234', 'admin', '2025-04-08 08:42:25', 60, 60, 60, 20),
+(2, 'TEST', 'TEST', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1),
+(3, 'enfant1', 'enfant1', 'user', '2025-04-08 09:49:04', 10, 8, 40, 28),
+(4, 'enfant2', 'enfant2', 'user', '2025-04-08 09:51:25', 28, 5, 40, 30);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
