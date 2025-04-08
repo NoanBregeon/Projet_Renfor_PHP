@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 07 avr. 2025 à 12:12
+-- Généré le : mar. 08 avr. 2025 à 06:43
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -20,32 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `projet_php`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `progression`
---
-
-DROP TABLE IF EXISTS `progression`;
-CREATE TABLE IF NOT EXISTS `progression` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_pseudo` int DEFAULT NULL,
-  `answered_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `progression_addition` int DEFAULT '1',
-  `progression_soustraction` int NOT NULL DEFAULT '1',
-  `progression_division` int NOT NULL DEFAULT '1',
-  `progression_multiplication` int NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`id_pseudo`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `progression`
---
-
-INSERT INTO `progression` (`id`, `id_pseudo`, `answered_at`, `progression_addition`, `progression_soustraction`, `progression_division`, `progression_multiplication`) VALUES
-(1, 1, '2025-04-07 13:45:34', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -322,18 +296,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `age` int DEFAULT NULL,
   `role` enum('user','admin') DEFAULT 'user',
+  `answered_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `progression_addition` int DEFAULT '1',
+  `progression_soustraction` int DEFAULT '1',
+  `progression_division` int DEFAULT '1',
+  `progression_multiplication` int DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `age`, `role`) VALUES
-(1, 'Admin', 'Admin1234', NULL, 'admin');
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `answered_at`, `progression_addition`, `progression_soustraction`, `progression_division`, `progression_multiplication`) VALUES
+(1, 'Admin', 'Admin1234', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1),
+(2, 'TEST', 'TEST', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1);
 
 --
 -- Déclencheurs `users`
