@@ -32,14 +32,11 @@ if (isset($_POST['login'])) {
 if (isset($_POST['register'])) {
     $active_form = 'register';
     $username = $_POST['username_register'];
-    $age = (int)$_POST['age'];
     $password = $_POST['password_register'];
     $confirm = $_POST['password_confirm'];
 
     if ($password !== $confirm) {
         $message_creation = "❌ Les mots de passe ne correspondent pas.";
-    } elseif ($age < 5 || $age > 12) {
-        $message_creation = "❌ L'âge doit être entre 5 et 12 ans.";
     } else {
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->execute([$username]);
@@ -47,8 +44,8 @@ if (isset($_POST['register'])) {
         if ($stmt->fetch()) {
             $message_creation = "❌ Ce nom d'utilisateur est déjà pris.";
         } else {
-            $stmt = $pdo->prepare("INSERT INTO users (username, password, age, role, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (?, ?, ?, 'user', 1, 1, 1, 1)");
-            $stmt->execute([$username, $password, $age]);
+            $stmt = $pdo->prepare("INSERT INTO users (username, password, role, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (?, ?, ?, 'user', 1, 1, 1, 1)");
+            $stmt->execute([$username, $password]);
 
             header("Location: connexion_et_creation.php?inscription=ok");
             exit;
@@ -99,8 +96,6 @@ if (isset($_POST['register'])) {
         <input type="hidden" name="register" value="1">
         <label>Nom d’utilisateur :</label><br>
         <input type="text" name="username_register" required><br>
-        <label>Âge :</label><br>
-        <input type="number" name="age" min="5" max="12" required><br>
         <label>Mot de passe :</label><br>
         <input type="password" name="password_register" required><br>
         <label>Confirmer le mot de passe :</label><br>
