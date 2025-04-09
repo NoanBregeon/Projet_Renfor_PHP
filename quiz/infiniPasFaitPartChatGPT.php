@@ -1,12 +1,31 @@
 <?php
 if(!isset($_GET["reponse"])){
     $_SESSION["typeinfini"]=$_GET["type"];
-    $_SESSION["resultatinfini"];
-    $_SESSION["nombre1"]=rand(1, 200);
-    $_SESSION["nombre2"]=rand(1, 200);;
     if($_SESSION["typeinfini"]=="addition"){
+        $_SESSION["nombre1"]=rand(1, 200);
+        $_SESSION["nombre2"]=rand(1, 200);
         $_SESSION["resultatinfini"]=$_SESSION["nombre1"]+$_SESSION["nombre2"];
     }
+    if($_SESSION["typeinfini"]=="soustraction"){
+        $_SESSION["nombre1"]=rand(100, 200);
+        $_SESSION["nombre2"]=rand(1, 100);
+        $_SESSION["resultatinfini"]=$_SESSION["nombre1"]-$_SESSION["nombre2"];
+    }
+    if($_SESSION["typeinfini"]=="division"){
+        $_SESSION["nombre1"]=rand(100, 200);
+        $_SESSION["nombre2"]=rand(1, 100);
+        while($_SESSION["nombre1"]%$_SESSION["nombre2"] != 0){
+            $_SESSION["nombre1"]=rand(50, 100);
+            $_SESSION["nombre2"]=rand(1, 50);
+        }
+        $_SESSION["resultatinfini"]=intdiv($_SESSION["nombre1"], $_SESSION["nombre2"]);
+    }
+    if($_SESSION["typeinfini"]=="multiplication"){
+        $_SESSION["nombre1"]=rand(1, 200);
+        $_SESSION["nombre2"]=rand(1, 200);
+        $_SESSION["resultatinfini"]=$_SESSION["nombre1"]*$_SESSION["nombre2"];
+    }
+    
 }
 ?>
 <!DOCTYPE html>
