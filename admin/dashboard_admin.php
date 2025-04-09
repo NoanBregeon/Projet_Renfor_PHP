@@ -11,7 +11,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 // Récupération de tous les utilisateurs sauf les admins
 $stmt = $pdo->prepare("SELECT username, progression_addition, progression_soustraction, progression_multiplication, progression_division 
-FROM users WHERE role != 'admin'");
+FROM users WHERE roles != 'admin'");
 $stmt->execute();
 $users = $stmt->fetchAll();
 ?>
