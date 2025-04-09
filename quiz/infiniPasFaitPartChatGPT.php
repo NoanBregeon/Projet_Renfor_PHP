@@ -51,17 +51,19 @@ if(!isset($_GET["reponse"])){
 <body>
     <h2>Mode Infini</h2>
     <div class="container">
-<div class="classement">
-        <h4>Classement</h4>
-        <?php
-            $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak';
-            $temp1 = $pdo->query($sql1);
+    <?php if($_GET["type"]=="tout"): ?>
+        <div class="classement">
+            <h4>Classement</h4>
+            <?php
+                $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak LIMIT 3';
+                $temp1 = $pdo->query($sql1);
 
-            while($resultats1=$temp1->fetch()){
-                echo '<div class="div_classement">'."<p>".$resultats1["username"]."</p>"."<p>".$resultats1["streak"]."</p>"."</div>"."</br>";
-            }
-        ?>
-    </div>
+                while($resultats1=$temp1->fetch()){
+                    echo '<div class="div_classement">'."<p>".$resultats1["username"]."</p>"."<p>".$resultats1["streak"]."</p>"."</div>"."</br>";
+                }
+            ?>
+        </div>
+    <?php endif ?>
     <form class="grid_quiz" action="quiz.php">
         <div class="calcul_div">
             <p class="calcul"><?php echo $_SESSION["nombre1"]; ?></p>
@@ -103,6 +105,7 @@ if(!isset($_GET["reponse"])){
         }
         ?>
     </form>
+    <?php if($_GET["type"]=="tout"): ?>
     <div class="streak">
         <h4>Chaine !</h4>
         <?php
@@ -119,8 +122,16 @@ if(!isset($_GET["reponse"])){
             $streakClass = "streak-lvl6";
         }
         echo '<p class="p_streak '.$streakClass.'">'.$_SESSION["streak"]."</p>";
+        $sql2= 'SELECT streak FROM users WHERE id='.$_SESSION["user_id"];
+        $temp2 = $pdo->query($sql2);
+        $resultats2=$temp2->fetch();
+        if($resultats2["streak"] < $_SESSION["streak"]){
+            $sql3= 'UPDATE users SET streak='.$_SESSION["streak"].' WHERE id='.$_SESSION["user_id"];
+            $pdo->exec($sql3);
+        }
         ?>
     </div>
     </div>
+    <?php endif ?>
 </body>
 </html>
