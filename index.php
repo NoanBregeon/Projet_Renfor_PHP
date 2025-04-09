@@ -36,9 +36,9 @@ if ($percent_global == 100) $couleur = "#00c200";
     <div class="contener">
         <?php if (isset($_SESSION['nom'])): ?>
             <div class="header">
-                <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a><br>
+                
                 <h1>Bienvenue <?= ($_SESSION['nom']) ?> !</h1>
-            </div>
+            </div><a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a>
             <div>
                 <img class="logo" src="styles/logo_grenouille.png" alt="logo" title="logo">
             </div>
