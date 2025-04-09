@@ -99,9 +99,9 @@ if(!isset($_GET["reponse"])){
     </div>
     <div class="classement">
         <?php
-            $sql1= 'SELECT * FROM users ORDER BY streak';
+            $sql1= 'SELECT * FROM users WHERE roles=="user" ORDER BY streak';
             $temp1 = $pdo->query($sql1);
-            $resultats1=$temp1->fetch();
+
             while($resultats1=$temp1->fetch()){
                 echo $resultats1["username"]." ".$resultats1["streak"]."</br>";
             }
