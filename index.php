@@ -60,12 +60,12 @@ if ($percent_global == 100) $couleur = "#00c200";
                     <?php if ($_SESSION['addition'] >= 60 && $_SESSION['soustraction'] >= 60 && $_SESSION['multiplication'] >= 60 && $_SESSION['division'] >= 60){
                         echo '<a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini<img class="img" src="styles/cadenas-ouvert.png" alt=""></a>';
                     }else{
-                        echo '<a class="button bloquer infini" href="index.php">infini<img class="img" src="styles/cadenas.png" alt=""></a>';
+                        echo '<a class="button bloquer_infini" href="index.php">infini<img class="img" src="styles/cadenas.png" alt=""></a>';
                     }
                     ?>
 
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a class="button" href="admin/dashboard_admin.php">Admin</a>
+                        <a class="button_admin" href="admin/dashboard_admin.php">Admin</a>
                     <?php endif; ?>
                 </div>
 
