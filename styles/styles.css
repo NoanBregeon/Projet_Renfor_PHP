@@ -265,6 +265,27 @@ h1, h2 {
     color: white;
 }
 
+.infini {
+    margin: 75px 50px 75px 0px;
+    background-color: #c500df;
+    border: 5px solid rgb(161, 0, 182);
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 5px 10px #81008d;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+}
+
+.infini:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #8e00aa;
+    box-shadow: 8px 13px #570068;
+    transition: all 0.3s ease;
+    color: white;
+}
+
 .retour {
     position: fixed;
     bottom: 20px;
