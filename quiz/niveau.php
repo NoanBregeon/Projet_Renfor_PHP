@@ -66,8 +66,8 @@ $resultats=$temp->fetch();
     <form action="quiz.php">
         <h2>Question numero : <?php echo $_GET["question"]-$x; ?></h2>
         <div class="calcul_div">
-            <p class="calcul"><?php echo $resultats["nombre1"]; ?></p>
-        <p><?php 
+            <p class="calcul_nb1"><?php echo $resultats["nombre1"]; ?></p>
+        <p class="img_ope"><?php 
         if($resultats["operation_type"]=="addition"){
             echo '<img class="img" src="../styles/plus.png" alt="">';
         }elseif($resultats["operation_type"]=="soustraction"){
@@ -78,7 +78,7 @@ $resultats=$temp->fetch();
             echo '<img class="img" src="../styles/division.png" alt="">';
         }
         ?></p>
-        <p class="calcul"><?php echo $resultats["nombre2"]; ?></p>
+        <p class="calcul_nb2"><?php echo $resultats["nombre2"]; ?></p>
         <p class="calcul">=</p>
         <input class="barre" type="number" name="reponse" required value=<?php if(isset($_GET["reponse"])){echo '"'.$_GET["reponse"].'"';} ?> >
         <input type="hidden" name="type" value=<?php echo '"'.$type.'"'; ?>>
@@ -88,7 +88,7 @@ $resultats=$temp->fetch();
         <?php
         if (isset($_GET["reponse"])){
             if($_GET["reponse"]==$resultats["correct_answer"]){
-                echo '<div class="quiz">bien jouer</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
+                echo '<div class="quiz">Bien joué</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
                 $_SESSION["niveau"]=$_GET["question"]+1;
                 if($_GET["question"]-$x==$_SESSION[$_GET["type"]]){
                     $_SESSION[$_GET["type"]]=$_SESSION[$_GET["type"]]+1;
