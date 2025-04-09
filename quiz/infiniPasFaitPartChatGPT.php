@@ -50,7 +50,19 @@ if(!isset($_GET["reponse"])){
 </head>
 <body>
     <h2>Mode Infini</h2>
-    <form action="quiz.php">
+    <div class="container">
+<div class="classement">
+        <h4>Classement</h4>
+        <?php
+            $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak';
+            $temp1 = $pdo->query($sql1);
+
+            while($resultats1=$temp1->fetch()){
+                echo '<div class="div_classement">'."<p>".$resultats1["username"]."</p>"."<p>".$resultats1["streak"]."</p>"."</div>"."</br>";
+            }
+        ?>
+    </div>
+    <form class="grid_quiz" action="quiz.php">
         <div class="calcul_div">
             <p class="calcul"><?php echo $_SESSION["nombre1"]; ?></p>
         <p><?php 
@@ -92,21 +104,13 @@ if(!isset($_GET["reponse"])){
         ?>
     </form>
     <div class="streak">
-        <h4>chaine !</h4>
+        <h4>Chaine !</h4>
         <?php
-        echo "<p>".$_SESSION["streak"]."</p>";
+        echo '<p class="p_streak">'.$_SESSION["streak"]."</p>";
         ?>
     </div>
-    <div class="classement">
-        <h4>classement</h4>
-        <?php
-            $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak';
-            $temp1 = $pdo->query($sql1);
-
-            while($resultats1=$temp1->fetch()){
-                echo "<div>"."<p>".$resultats1["username"]."</p>"."<p>".$resultats1["streak"]."</p>"."</div>"."</br>";
-            }
-        ?>
     </div>
+    
+    
 </body>
 </html>

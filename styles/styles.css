@@ -68,7 +68,7 @@ div {
     background-color: #ff88dc;
     border: 5px solid rgb(255, 192, 103);
     border-radius: 25px;
-    width: 25%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     color: #5e17eb;
@@ -631,4 +631,54 @@ th {
 tr {
     background-color: #f0fdff;
     height: 60px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-template-columns: (3,2fr);
+}
+
+.classement {
+    margin: 0px 0px 0px 50px;
+    width: 1%;
+    font-size: 18px;
+    background-color: #ff88dc;
+    border: 5px solid rgb(255, 192, 103);
+    color: #5e17eb;
+    box-shadow: 5px 10px #ffde59;
+    border-radius: 25px;
+    justify-content: left;
+    flex: auto;
+}
+
+.div_classement {
+    margin: 0px;
+    border: 5px solid rgb(255, 192, 103);
+    border-radius: 20px;
+}
+
+.grid_quiz {
+    justify-content: center;
+    flex: auto;
+}
+
+.streak {
+    margin: 0px 0px 0px 50px;
+    width: 1%;
+    font-size: 18px;
+    background-color: #ff88dc;
+    border: 5px solid rgb(255, 192, 103);
+    color: #5e17eb;
+    box-shadow: 5px 10px #ffde59;
+    border-radius: 25px;
+    justify-content: right;
+    flex: auto;
+}
+
+.p_streak {
+    margin: 0px;
+    border: 5px solid rgb(255, 192, 103);
+    border-radius: 20px;
 }
