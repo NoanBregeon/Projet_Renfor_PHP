@@ -1,6 +1,16 @@
 <?php
 if(!isset($_GET["reponse"])){
-    $_SESSION["typeinfini"]=$_GET["type"];
+    $type=["addition", "soustraction", "division", "multiplication"];
+    $x=rand(0,3);
+    if($_GET["type"]=="tout"){
+        $_SESSION["typeinfini"]=$type[$x];
+        $_SESSION["reset"]="tout";
+    }else{
+        $_SESSION["typeinfini"]=$_GET["type"];
+        $_SESSION["reset"]=$_GET["type"];
+    }
+
+
     if($_SESSION["typeinfini"]=="addition"){
         $_SESSION["nombre1"]=rand(1, 200);
         $_SESSION["nombre2"]=rand(1, 200);
@@ -66,7 +76,7 @@ if(!isset($_GET["reponse"])){
             }
 
             if(isset($_GET["suivant"])){
-                header('Location: quiz.php?type='.$_SESSION["typeinfini"].'&infini=1');
+                header('Location: quiz.php?type='.$_SESSION["reset"].'&infini=1');
             }
         }
         ?>

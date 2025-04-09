@@ -59,7 +59,11 @@ include("../liaison/maj_session.php")
             }elseif(isset($_GET["question"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">menus</a>';
             }elseif(isset($_GET["infini"])){
-                echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">menus</a>';
+                if($_GET["type"]=="tout"){
+                    echo '<a href="../index.php" class="button retour">menus</a>';
+                }else{
+                    echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">menus</a>';
+                }
             }
             else{
                 echo '<a href=".." class="button retour">retour</a>';

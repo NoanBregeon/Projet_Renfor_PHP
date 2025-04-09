@@ -57,11 +57,13 @@ if ($percent_global == 100) $couleur = "#00c200";
                     <a class="button_lien" href="quiz/quiz.php?type=division">
                         Division <img class="img" src="styles/division.png" alt="division" title="division">
                     </a>
-                    <?php if ($_SESSION['addition'] >= 60 && $_SESSION['soustraction'] >= 60 && $_SESSION['multiplication'] >= 60 && $_SESSION['division'] >= 60): ?>
-                    <a class="button_lien" href="quiz/infini.php">
-                        Mode Infini <img class="img" src="styles/infini.png" alt="mode infini" title="mode infini">
-                    </a>
-                    <?php endif; ?>
+                    <?php if ($_SESSION['addition'] >= 60 && $_SESSION['soustraction'] >= 60 && $_SESSION['multiplication'] >= 60 && $_SESSION['division'] >= 60){
+                        echo '<a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini<img class="img" src="styles/cadenas-ouvert.png" alt=""></a>';
+                    }else{
+                        
+                        echo '<a class="button bloquer infini" href="index.php">infini<img class="img" src="styles/cadenas.png" alt=""></a>';
+                    }
+                     ?>
 
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <a class="button" href="admin/dashboard_admin.php">Admin</a>
