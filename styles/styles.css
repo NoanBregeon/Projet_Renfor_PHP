@@ -549,17 +549,18 @@ th, td {
 }
 
 .dash_td {
-    height: 0vh;
+    height: 0px;
+}
+
+.dash_tr:hover {
+    background-color: #f0fdff;
+    height: 60px;
 }
 
 th {
     background-color: #ff88dc;
     color: #5e17eb;
     border-bottom: 3px solid rgb(255, 192, 103);
-}
-
-tr:hover {
-    background-color: #f0fdff;
 }
 
 .dashboard-container {
@@ -601,6 +602,8 @@ tr:hover {
     background-color: #e0e0e0;
     border-radius: 10px;
     overflow: hidden;
+    margin: 0px;
+    margin-top: 20px;
 }
 
 .progression-filled {
@@ -624,4 +627,8 @@ tr:hover {
 .emoji-cell {
     font-size: 28px;
     padding: 10px;
+}
+tr {
+    background-color: #f0fdff;
+    height: 60px;
 }
