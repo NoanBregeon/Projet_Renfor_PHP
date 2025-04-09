@@ -97,7 +97,7 @@ $resultats=$temp->fetch();
                 }
 
             }else{
-                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input class="button" type="submit" value=":(">';
+                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
                 $_SESSION["niveau"]=$_GET["question"]-1;   
             }
 
