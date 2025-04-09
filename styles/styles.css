@@ -607,7 +607,9 @@ tr:hover {
     height: 100%;
     background-color: #5e17eb;
     border-radius: 10px;
+    
 }
+
 
 .total-cell {
     font-weight: bold;
@@ -618,4 +620,8 @@ tr:hover {
     font-weight: bold;
     color: #ff6b6b;
     font-size: 22px;
+}
+.emoji-cell {
+    font-size: 28px;
+    padding: 10px;
 }

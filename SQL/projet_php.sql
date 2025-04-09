@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 08 avr. 2025 à 13:09
--- Version du serveur : 8.3.0
--- Version de PHP : 8.2.18
+-- Généré le : mer. 09 avr. 2025 à 12:07
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `reste` int DEFAULT NULL,
   `difficulty` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=241 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `questions`
@@ -296,12 +296,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` enum('user','admin') DEFAULT 'user',
+  `roles` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'user',
   `answered_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `progression_addition` int DEFAULT '1',
   `progression_soustraction` int DEFAULT '1',
   `progression_division` int DEFAULT '1',
   `progression_multiplication` int DEFAULT '1',
+  `streak` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -310,11 +311,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `answered_at`, `progression_addition`, `progression_soustraction`, `progression_division`, `progression_multiplication`) VALUES
-(1, 'Admin', 'Admin1234', 'admin', '2025-04-08 08:42:25', 60, 60, 60, 20),
-(2, 'TEST', 'TEST', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1),
-(3, 'enfant1', 'enfant1', 'user', '2025-04-08 09:49:04', 10, 8, 40, 28),
-(4, 'enfant2', 'enfant2', 'user', '2025-04-08 09:51:25', 28, 5, 40, 30);
+INSERT INTO `users` (`id`, `username`, `password`, `roles`, `answered_at`, `progression_addition`, `progression_soustraction`, `progression_division`, `progression_multiplication`, `streak`) VALUES
+(1, 'Admin', 'Admin1234', 'admin', '2025-04-08 08:42:25', 60, 60, 60, 60, 0),
+(2, 'TEST', 'TEST', 'user', '2025-04-08 08:42:25', 1, 1, 1, 1, 0),
+(3, 'enfant1', 'enfant1', 'user', '2025-04-08 09:49:04', 10, 8, 40, 28, 0),
+(4, 'enfant2', 'enfant2', 'user', '2025-04-08 09:51:25', 28, 5, 40, 30, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
