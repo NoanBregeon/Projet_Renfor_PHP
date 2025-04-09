@@ -271,7 +271,7 @@ h1, h2 {
 }
 
 .infini {
-    margin: 50px 50px 50px 0px;
+    margin: 0px;
     background-color: #c500df;
     border: 5px solid rgb(161, 0, 182);
     border-radius: 30px;
