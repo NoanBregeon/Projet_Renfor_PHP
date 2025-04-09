@@ -44,7 +44,7 @@ if (isset($_POST['register'])) {
         if ($stmt->fetch()) {
             $message_creation = "❌ Ce nom d'utilisateur est déjà pris.";
         } else {
-            $stmt = $pdo->prepare("INSERT INTO users (username, password, role, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (?, ?, ?, 'user', 1, 1, 1, 1)");
+            $stmt = $pdo->prepare("INSERT INTO users (username, password, role, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (?, ?, 'user', 1, 1, 1, 1)");
             $stmt->execute([$username, $password]);
 
             header("Location: connexion_et_creation.php?inscription=ok");
