@@ -67,6 +67,7 @@ if (isset($_POST['register'])) {
     <script src="../scripts/form_switch.js" defer></script>
 </head>
 <body>
+<div class="header"></div>
 <div class="connexion-container">
     <h2 id="form-title"><?= $active_form === 'register' ? 'Créer un compte ✍️' : 'Connexion 🔐' ?></h2>
 
@@ -104,11 +105,14 @@ if (isset($_POST['register'])) {
 
     <!-- Boutons sous les formulaires -->
     <div class="form-toggle">
-    <a href="../index.php" class="button_form">⬅ Retour</a>
-        <button type="button" class="button_form" id="toggle-button" data-state="<?= $active_form === 'register' ? 'register' : 'login' ?>">
-            <?= $active_form === 'register' ? 'Se connecter 🔐' : 'Créer un compte ✍️' ?>
-        </button>
+    <button type="button" class="button_form" id="toggle-button" data-state="<?= $active_form === 'register' ? 'register' : 'login' ?>">
+        <?= $active_form === 'register' ? 'Se connecter 🔐' : 'Créer un compte ✍️' ?>
+    </button>
+    </div>
+    <div class="form-toggle">
+        <a href="../index.php" class="button_form">⬅ Retour</a>
     </div>
 </div>
+<div class="footer"></div>
 </body>
 </html>
