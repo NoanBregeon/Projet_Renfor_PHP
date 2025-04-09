@@ -94,7 +94,17 @@ if(!isset($_GET["reponse"])){
     <div class="streak">
         <h4>chaine !</h4>
         <?php
-        echo $_SESSION["streak"];
+        echo "<p>".$_SESSION["streak"]."</p>";
+        ?>
+    </div>
+    <div class="classement">
+        <?php
+            $sql1= 'SELECT * FROM users ORDER BY streak';
+            $temp1 = $pdo->query($sql1);
+            $resultats1=$temp1->fetch();
+            while($resultats1=$temp1->fetch()){
+                echo $resultats1["username"]." ".$resultats1["streak"]."</br>";
+            }
         ?>
     </div>
 </body>
