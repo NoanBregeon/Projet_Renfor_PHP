@@ -62,7 +62,7 @@ if(!isset($_GET["reponse"])){
             if($_GET["reponse"]==$_SESSION["resultatinfini"]){
                 echo '<div class="quiz">bien jouer</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
             }else{
-                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$_SESSION["resultatinfini"].'</div><input type="hidden" name="suivant"><input class="button" type="submit" value=":(">';
+                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$_SESSION["resultatinfini"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
             }
 
             if(isset($_GET["suivant"])){
