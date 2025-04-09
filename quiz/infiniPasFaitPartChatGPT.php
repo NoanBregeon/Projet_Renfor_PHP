@@ -31,8 +31,8 @@ if(!isset($_GET["reponse"])){
         $_SESSION["resultatinfini"]=intdiv($_SESSION["nombre1"], $_SESSION["nombre2"]);
     }
     if($_SESSION["typeinfini"]=="multiplication"){
-        $_SESSION["nombre1"]=rand(1, 200);
-        $_SESSION["nombre2"]=rand(1, 200);
+        $_SESSION["nombre1"]=rand(1, 12);
+        $_SESSION["nombre2"]=rand(1, 12);
         $_SESSION["resultatinfini"]=$_SESSION["nombre1"]*$_SESSION["nombre2"];
     }
     
