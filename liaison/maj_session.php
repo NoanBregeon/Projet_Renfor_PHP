@@ -20,7 +20,7 @@ $user = $stmt->fetch();
 
 if ($user) {
     $_SESSION['nom'] = $user['username'];
-    $_SESSION['role'] = $user['role'];
+    $_SESSION['role'] = $user['roles'];
     $_SESSION['addition'] = $user['progression_addition'];
     $_SESSION['soustraction'] = $user['progression_soustraction'];
     $_SESSION['multiplication'] = $user['progression_multiplication'];
