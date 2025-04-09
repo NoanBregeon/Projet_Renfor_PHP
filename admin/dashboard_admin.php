@@ -22,9 +22,6 @@ $users = $stmt->fetchAll();
     <meta charset="UTF-8">
     <title>Dashboard Admin</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <style>
-        
-    </style>
 </head>
 <body>
     <div class="header"></div>
@@ -48,7 +45,7 @@ $users = $stmt->fetchAll();
                 <?php foreach ($users as $u): 
                     $total = $u['progression_addition'] + $u['progression_soustraction'] + $u['progression_multiplication'] + $u['progression_division'];
                     $pourcentage = round(($total / 240) * 100);
-                ?>
+                    ?>
                 <tr>
                     <td class="dash_td"><?= htmlspecialchars($u['username']) ?></td>
                     <td class="dash_td"><?= $u['progression_addition'] ?>/60</td>
@@ -58,7 +55,7 @@ $users = $stmt->fetchAll();
                     <td class="total-cell"><?= $total ?>/240</td>
                     <td>
                         <div class="progression-bar">
-                            <div class="progression-filled" style="width: <?= $pourcentage ?>%;"></div>
+                            <div class="barre-globale-remplie-verticale" style="width: <?= $pourcentage ?>%; height: 100%;"></div>
                         </div>
                         <span class="percent-cell"><?= $pourcentage ?>%</span>
                     </td>
