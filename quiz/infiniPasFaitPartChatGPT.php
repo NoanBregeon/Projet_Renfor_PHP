@@ -1,6 +1,19 @@
 <?php
+if(!isset($_SESSION["streak"])){
+    $_SESSION["streak"]=0;
+}
 if(!isset($_GET["reponse"])){
-    $_SESSION["typeinfini"]=$_GET["type"];
+    $type=["addition", "soustraction", "division", "multiplication"];
+    $x=rand(0,3);
+    if($_GET["type"]=="tout"){
+        $_SESSION["typeinfini"]=$type[$x];
+        $_SESSION["reset"]="tout";
+    }else{
+        $_SESSION["typeinfini"]=$_GET["type"];
+        $_SESSION["reset"]=$_GET["type"];
+    }
+
+
     if($_SESSION["typeinfini"]=="addition"){
         $_SESSION["nombre1"]=rand(1, 200);
         $_SESSION["nombre2"]=rand(1, 200);
@@ -21,8 +34,8 @@ if(!isset($_GET["reponse"])){
         $_SESSION["resultatinfini"]=intdiv($_SESSION["nombre1"], $_SESSION["nombre2"]);
     }
     if($_SESSION["typeinfini"]=="multiplication"){
-        $_SESSION["nombre1"]=rand(1, 200);
-        $_SESSION["nombre2"]=rand(1, 200);
+        $_SESSION["nombre1"]=rand(1, 12);
+        $_SESSION["nombre2"]=rand(1, 12);
         $_SESSION["resultatinfini"]=$_SESSION["nombre1"]*$_SESSION["nombre2"];
     }
     
@@ -64,14 +77,25 @@ if(!isset($_GET["reponse"])){
             }else{
                 echo '<div class="quiz">perdu la bonne reponse attendu est : '.$_SESSION["resultatinfini"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
             }
-
+            
             if(isset($_GET["suivant"])){
-                header('Location: quiz.php?type='.$_SESSION["typeinfini"].'&infini=1');
+                header('Location: quiz.php?type='.$_SESSION["reset"].'&infini=1');
+                if($_GET["reponse"]==$_SESSION["resultatinfini"]){
+                    $_SESSION["streak"]=$_SESSION["streak"]+1;
+
+                }else{
+                    $_SESSION["streak"]=0;
+
+                }
             }
         }
         ?>
-        
-
     </form>
+    <div class="streak">
+        <h4>chaine !</h4>
+        <?php
+        echo $_SESSION["streak"];
+        ?>
+    </div>
 </body>
 </html>
