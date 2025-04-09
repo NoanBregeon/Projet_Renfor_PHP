@@ -85,9 +85,9 @@ if(!isset($_GET["reponse"])){
         <?php
         if (isset($_GET["reponse"])){
             if($_GET["reponse"]==$_SESSION["resultatinfini"]){
-                echo '<div class="quiz">bien jouer</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
+                echo '<div class="quiz">Bien joué</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
             }else{
-                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$_SESSION["resultatinfini"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
+                echo '<div class="quiz">Perdu la bonne reponse attendu est : '.$_SESSION["resultatinfini"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
             }
             
             if(isset($_GET["suivant"])){
@@ -106,11 +106,21 @@ if(!isset($_GET["reponse"])){
     <div class="streak">
         <h4>Chaine !</h4>
         <?php
-        echo '<p class="p_streak">'.$_SESSION["streak"]."</p>";
+        $streakClass = "streak-lvl1";
+        if($_SESSION["streak"] >= 1 && $_SESSION["streak"] < 2) {
+            $streakClass = "streak-lvl2";
+        } elseif($_SESSION["streak"] >= 2 && $_SESSION["streak"] < 3) {
+            $streakClass = "streak-lvl3";
+        } elseif($_SESSION["streak"] >= 3 && $_SESSION["streak"] < 4) {
+            $streakClass = "streak-lvl4";
+        } elseif($_SESSION["streak"] >= 4 && $_SESSION["streak"] < 5) {
+            $streakClass = "streak-lvl5";
+        } elseif($_SESSION["streak"] >= 5) {
+            $streakClass = "streak-lvl6";
+        }
+        echo '<p class="p_streak '.$streakClass.'">'.$_SESSION["streak"]."</p>";
         ?>
     </div>
     </div>
-    
-    
 </body>
 </html>
