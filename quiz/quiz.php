@@ -20,7 +20,7 @@ include("../liaison/maj_session.php")
             
         </div>
         <?php
-            if(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"])){
+            if(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"]) && !isset($_GET["infini"]) ){
             echo '<h2>Choisi ta difficulté</h2>';
             echo '<div class="choix du niveau">
                 <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">facile<img class="img" src="../styles/cadenas-ouvert.png" alt=""></a></div>';
@@ -36,6 +36,12 @@ include("../liaison/maj_session.php")
                     
                     echo '<div><a class="button bloquer difficile" href="quiz.php?type='.$_GET["type"].'">difficile<img class="img" src="../styles/cadenas.png" alt=""></a></div>';
                 }
+                if ($_SESSION[$progression] >= 60){
+                    echo '<div><a class="button infini" href="quiz.php?type='.$_GET["type"].'&infini=1">infini<img class="img" src="../styles/cadenas-ouvert.png" alt=""></a></div>';
+                }else{
+                    
+                    echo '<div><a class="button bloquer infini" href="quiz.php?type='.$_GET["type"].'">infini<img class="img" src="../styles/cadenas.png" alt=""></a></div>';
+                }
                 
                 echo '</div>';
             }
@@ -45,11 +51,17 @@ include("../liaison/maj_session.php")
             }elseif(isset($_GET["type"]) && !isset($_GET["niv"]) && isset($_GET["question"])){
                 include("niveau.php");
             }
+            elseif(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"]) && isset($_GET["infini"])){
+                include("infiniPasFaitPartChatGPT.php");
+            }
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';
             }elseif(isset($_GET["question"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">menus</a>';
-            }else{
+            }elseif(isset($_GET["infini"])){
+                echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">menus</a>';
+            }
+            else{
                 echo '<a href=".." class="button retour">retour</a>';
             }
                 ?>
