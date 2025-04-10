@@ -66,7 +66,7 @@ $users = $stmt->fetchAll();
             </tbody>
         </table>
 
-        <a class="retour-dashboard" href="../index.php">⬅ Retour à l'accueil</a>
+        <a class="retour-dashboard" href="../index.php">Accueil</a>
     </div>
 
     <div class="footer"></div>
