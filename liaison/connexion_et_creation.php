@@ -110,7 +110,7 @@ if (isset($_POST['register'])) {
     </button>
     </div>
     <div class="form-toggle">
-        <a href="../index.php" class="button_form">⬅ Retour</a>
+        <a href="../index.php" class="button_form">Retour</a>
     </div>
 </div>
 <div class="footer"></div>

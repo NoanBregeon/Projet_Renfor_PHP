@@ -58,9 +58,9 @@ if ($percent_global == 100) $couleur = "#00c200";
                         Division <img class="img" src="styles/division.png" alt="division" title="division">
                     </a>
                     <?php if ($_SESSION['addition'] >= 60 && $_SESSION['soustraction'] >= 60 && $_SESSION['multiplication'] >= 60 && $_SESSION['division'] >= 60){
-                        echo '<a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini<img class="img" src="styles/cadenas-ouvert.png" alt=""></a>';
+                        echo '<a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini<img class="img" src="styles/cadenas-ouvert.png" alt="debloqué" title="debloqué"></a>';
                     }else{
-                        echo '<a class="button bloquer_infini" href="index.php">infini<img class="img" src="styles/cadenas.png" alt=""></a>';
+                        echo '<a class="button bloquer_infini" href="index.php">infini<img class="img" src="styles/cadenas.png" alt="bloqué" title="bloqué"></a>';
                     }
                     ?>
 
@@ -87,7 +87,8 @@ if ($percent_global == 100) $couleur = "#00c200";
             <div class="header"></div>
             <h1>Bienvenue</h1>
             <div>
-                <a class="button" id="connexion" href="liaison/connexion_et_creation.php">Connexion</a><br>
+                <a class="button" id="connexion" href='liaison/connexionSansChatGPT.php'>Connexion</a><br>
+                <a class="button" id="connexion" href='liaison/creationSansChatGPT.php'>crée un compte</a><br>
             </div>
             <div class="footer"></div>
         <?php endif; ?>
