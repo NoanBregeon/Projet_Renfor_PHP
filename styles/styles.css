@@ -454,6 +454,12 @@ h1, h2 {
     text-align: center;
 }
 
+.button_connexion:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #ff5dc8;
+    box-shadow: 8px 13px #ffde59;
+}
+
 .connexion-form label,
 .connexion-form input {
     text-align: left;
@@ -517,16 +523,11 @@ h1, h2 {
 
 .button_form:hover {
     transform: scale(1.05) rotate(2deg);
-    background-color: #5cc0e6;
+    background-color: #ff5dc8;
+    box-shadow: 8px 13px #ffde59;
 }
 
-#button_connexion{
-    margin: 25px 25px 25px 25px;
-}
-#button_connexion:hover {
-    background-color: #5cb85c;
-    color: white;
-}
+
 #button_return_creation{
     margin: 50px 25px 25px 25px;
 }

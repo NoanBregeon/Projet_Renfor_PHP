@@ -78,7 +78,7 @@ if (isset($_POST['register'])) {
     <!-- Formulaire Connexion -->
     <form method="POST" class="connexion-form" id="form-login" <?= $active_form === 'register' ? 'style="display:none;"' : '' ?>>
         <?php if ($message_connexion): ?>
-            <p class="error-message" id="login-error" style="display: none;"><?= ($message_connexion) ?></p>
+            <p style="color:red"><?= ($message_connexion) ?></p>
         <?php endif; ?>
         <input type="hidden" name="login" value="1">
         <label>Nom d’utilisateur :</label>
@@ -93,7 +93,7 @@ if (isset($_POST['register'])) {
     <!-- Formulaire Création -->
     <form method="POST" class="connexion-form" id="form-register" <?= $active_form === 'login' ? 'style="display:none;"' : '' ?>>
         <?php if ($message_creation): ?>
-            <p class="error-message" id="register-error" style="display: none;"><?= ($message_creation) ?></p>
+            <p style="color:red"><?= ($message_creation) ?></p>
         <?php endif; ?>
 
         <input type="hidden" name="register" value="1">
