@@ -659,6 +659,41 @@ tr {
     border-radius: 20px;
 }
 
+.trophy-position-1 {
+    background-color: #ffde59;
+    border-color: #ffc800;
+    box-shadow: 0 0 10px #ffde59;
+}
+
+.trophy-position-2 {
+    background-color: #b8c3ff;
+    border-color: #9aa3ff;
+}
+
+.trophy-position-3 {
+    background-color: #ff8f8f;
+    border-color: #ff6b6b;
+}
+
+.trophy-icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.div_classement {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.div_classement p {
+    margin: 0;
+    display: inline-block;
+}
+
 .grid_quiz {
     justify-content: center;
     flex: auto;

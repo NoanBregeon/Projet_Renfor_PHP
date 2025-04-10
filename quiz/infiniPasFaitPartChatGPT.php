@@ -57,9 +57,23 @@ if(!isset($_GET["reponse"])){
             <?php
                 $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak LIMIT 3';
                 $temp1 = $pdo->query($sql1);
+                $position = 1;
 
-                while($resultats1=$temp1->fetch()){
-                    echo '<div class="div_classement">'."<p>".$resultats1["username"]."</p>"."<p>".$resultats1["streak"]."</p>"."</div>"."</br>";
+                while($resultats1 = $temp1->fetch()) {
+                    $trophyClass = "trophy-position-" . $position;
+                    $trophyImg = "";
+                    if ($position == 1) {
+                        $trophyImg = '<img src="../styles/trophy-gold.png" alt="1ère place" class="trophy-icon">';
+                    } elseif ($position == 2) {
+                        $trophyImg = '<img src="../styles/trophy-silver.png" alt="2ème place" class="trophy-icon">';
+                    } elseif ($position == 3) {
+                        $trophyImg = '<img src="../styles/trophy-bronze.png" alt="3ème place" class="trophy-icon">';
+                    }
+                    echo '<div class="div_classement ' . $trophyClass . '">';
+                    echo $trophyImg;
+                    echo "<p>" . $resultats1["username"] . " : " . $resultats1["streak"] . "</p>";
+                    echo "</div></br>";
+                    $position++;
                 }
             ?>
         </div>
@@ -110,15 +124,15 @@ if(!isset($_GET["reponse"])){
         <h4>Chaine !</h4>
         <?php
         $streakClass = "streak-lvl1";
-        if($_SESSION["streak"] >= 1 && $_SESSION["streak"] < 2) {
+        if($_SESSION["streak"] >= 1 && $_SESSION["streak"] < 5) {
             $streakClass = "streak-lvl2";
-        } elseif($_SESSION["streak"] >= 2 && $_SESSION["streak"] < 3) {
+        } elseif($_SESSION["streak"] >= 5 && $_SESSION["streak"] < 10) {
             $streakClass = "streak-lvl3";
-        } elseif($_SESSION["streak"] >= 3 && $_SESSION["streak"] < 4) {
+        } elseif($_SESSION["streak"] >= 10 && $_SESSION["streak"] < 15) {
             $streakClass = "streak-lvl4";
-        } elseif($_SESSION["streak"] >= 4 && $_SESSION["streak"] < 5) {
+        } elseif($_SESSION["streak"] >= 15 && $_SESSION["streak"] < 20) {
             $streakClass = "streak-lvl5";
-        } elseif($_SESSION["streak"] >= 5) {
+        } elseif($_SESSION["streak"] >= 20) {
             $streakClass = "streak-lvl6";
         }
         echo '<p class="p_streak '.$streakClass.'">'.$_SESSION["streak"]."</p>";
