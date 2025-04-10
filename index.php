@@ -70,16 +70,16 @@ if ($percent_global == 100) $couleur = "#00c200";
                 </div>
 
                 <!-- Colonne droite : barre de progression verticale -->
-                <div class="progress-global">
-                    <div class="barre-globale-verticale">
-                        <div class="barre-globale-remplie-verticale"
-                            style="height: <?= $percent_global ?>%; background-color: <?= $couleur ?>;">
-                            <?= $percent_global ?>%
-                        </div>
-                    </div>
-                    <div class="barre-texte-verticale">
-                        <?= $total_fait ?>/<?= $total_questions ?><br>
-                        Progression
+            </div>
+            <div class="progress-global">
+                <div class="barre-texte-verticale">
+                    <?= $total_fait ?>/<?= $total_questions ?><br>
+                    Progression
+                </div>
+                <div class="barre-globale-verticale">
+                    <div class="barre-globale-remplie-verticale"
+                        style="width: <?= $percent_global ?>%; background-color: <?= $couleur ?>;">
+                        <?= $percent_global ?>%
                     </div>
                 </div>
             </div>
