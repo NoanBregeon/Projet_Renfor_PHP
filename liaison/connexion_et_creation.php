@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
         header("Location: ../index.php");
         exit;
     } else {
-        $message_connexion = "❌ Nom d’utilisateur ou mot de passe incorrect.";
+        $message_connexion = "Nom d’utilisateur ou mot de passe incorrect.";
     }
 }
 
@@ -36,13 +36,13 @@ if (isset($_POST['register'])) {
     $confirm = $_POST['password_confirm'];
 
     if ($password !== $confirm) {
-        $message_creation = "❌ Les mots de passe ne correspondent pas.";
+        $message_creation = "Les mots de passe ne correspondent pas.";
     } else {
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->execute([$username]);
 
         if ($stmt->fetch()) {
-            $message_creation = "❌ Ce nom d'utilisateur est déjà pris.";
+            $message_creation = "Ce nom d'utilisateur est déjà pris.";
         } else {
             $stmt = $pdo->prepare("INSERT INTO users (username, password, roles, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (?, ?, 'user', 1, 1, 1, 1)");
             $stmt->execute([$username, $password]);
@@ -69,10 +69,10 @@ if (isset($_POST['register'])) {
 <body>
 <div class="header"></div>
 <div class="connexion-container">
-    <h2 id="form-title"><?= $active_form === 'register' ? 'Créer un compte ✍️' : 'Connexion 🔐' ?></h2>
+    <h2 id="form-title"><?= $active_form === 'register' ? 'Créer un compte' : 'Connexion' ?></h2>
 
     <?php if (isset($_GET['inscription']) && $_GET['inscription'] === 'ok'): ?>
-        <p style="color:green">✅ Compte créé avec succès ! Vous pouvez vous connecter.</p>
+        <p style="color:green">Compte créé avec succès ! Vous pouvez vous connecter.</p>
     <?php endif; ?>
 
     <!-- Formulaire Connexion -->
@@ -106,7 +106,7 @@ if (isset($_POST['register'])) {
     <!-- Boutons sous les formulaires -->
     <div class="form-toggle">
     <button type="button" class="button_form" id="toggle-button" data-state="<?= $active_form === 'register' ? 'register' : 'login' ?>">
-        <?= $active_form === 'register' ? 'Se connecter 🔐' : 'Créer un compte ✍️' ?>
+        <?= $active_form === 'register' ? 'Se connecter ' : 'Créer un compte ' ?>
     </button>
     </div>
     <div class="form-toggle">
