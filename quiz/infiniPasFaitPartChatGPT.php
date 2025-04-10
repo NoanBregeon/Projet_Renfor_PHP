@@ -61,6 +61,7 @@ if(!isset($_GET["reponse"])){
                 $position = 1;
 
                 while($resultats1 = $temp1->fetch()) {
+                    $trophyClass = "trophy-position-" . $position;
                     $trophyImg = "";
                     if ($position == 1) {
                         $trophyImg = '<img src="../styles/trophy-gold.png" alt="1" class="trophy-icon">';
@@ -69,7 +70,7 @@ if(!isset($_GET["reponse"])){
                     } elseif ($position == 3) {
                         $trophyImg = '<img src="../styles/trophy-bronze.png" alt="3" class="trophy-icon">';
                     }
-                    echo '<div class="div_classement">';
+                    echo '<div class="div_classement ' . $trophyClass . '">';
                     echo $trophyImg;
                     echo '<p class="classement_user">' . $resultats1["username"] . "</p>";
                     echo '<p>:</p>';
