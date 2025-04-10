@@ -139,25 +139,29 @@ div {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    position: absolute;
+    bottom: -100px;
+    right: 30px;
 }
 
 .barre-globale-verticale {
-    width: 40px;
-    height: 250px;
+    width: 350px;
+    height: 50px;
     background-color: #e0e0e0;
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 3px 5px #ffde59;
     display: flex;
     flex-direction: column-reverse;
+    margin-top: 10px;
 }   
 
 .barre-globale-remplie-verticale {
-    width: 100%;
+    height: 100%;
     transition: height 0.5s ease;
     background-color: #5e17eb;
     text-align: center;
-    font-size: 12px;
+    font-size: 30px;
     font-weight: bold;
     color: white;
     display: flex;
@@ -168,9 +172,10 @@ div {
 }
 
 .barre-texte-verticale {
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
-    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 h1 {
