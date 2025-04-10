@@ -54,28 +54,32 @@ if(!isset($_GET["reponse"])){
     <?php if($_GET["type"]=="tout"): ?>
         <div class="classement">
             <h4>Classement</h4>
-            <?php
+            <div class="grid_classement">
+                <?php
                 $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak LIMIT 3';
                 $temp1 = $pdo->query($sql1);
                 $position = 1;
 
                 while($resultats1 = $temp1->fetch()) {
-                    $trophyClass = "trophy-position-" . $position;
                     $trophyImg = "";
                     if ($position == 1) {
-                        $trophyImg = '<img src="../styles/trophy-gold.png" alt="1ère place" class="trophy-icon">';
+                        $trophyImg = '<img src="../styles/trophy-gold.png" alt="1" class="trophy-icon">';
                     } elseif ($position == 2) {
-                        $trophyImg = '<img src="../styles/trophy-silver.png" alt="2ème place" class="trophy-icon">';
+                        $trophyImg = '<img src="../styles/trophy-silver.png" alt="2" class="trophy-icon">';
                     } elseif ($position == 3) {
-                        $trophyImg = '<img src="../styles/trophy-bronze.png" alt="3ème place" class="trophy-icon">';
+                        $trophyImg = '<img src="../styles/trophy-bronze.png" alt="3" class="trophy-icon">';
                     }
-                    echo '<div class="div_classement ' . $trophyClass . '">';
+                    echo '<div class="div_classement">';
                     echo $trophyImg;
-                    echo "<p>" . $resultats1["username"] . " : " . $resultats1["streak"] . "</p>";
+                    echo '<p class="classement_user">' . $resultats1["username"] . "</p>";
+                    echo '<p>:</p>';
+                    '<p class="classement_streak">' . $resultats1["streak"] . "</p>";
                     echo "</div></br>";
                     $position++;
                 }
             ?>
+            </div>
+            
         </div>
     <?php endif ?>
     <form class="grid_quiz" action="quiz.php">
