@@ -88,13 +88,13 @@ if(!isset($_GET["reponse"])){
             <p class="calcul"><?php echo $_SESSION["nombre1"]; ?></p>
         <p><?php 
         if( $_SESSION["typeinfini"]=="addition"){
-            echo '<img class="img" src="../styles/plus.png" alt="">';
+            echo '<img class="img" src="../styles/plus.png" alt="plus" title="plus">';
         }elseif( $_SESSION["typeinfini"]=="soustraction"){
-            echo '<img class="img" src="../styles/remove.png" alt="">';
+            echo '<img class="img" src="../styles/remove.png" alt="moins" title="moins">';
         }elseif( $_SESSION["typeinfini"]=="multiplication"){
-            echo '<img class="img" src="../styles/multiplication.png" alt="">';
+            echo '<img class="img" src="../styles/multiplication.png" alt="multiplication" title="multiplication">';
         }elseif( $_SESSION["typeinfini"]=="division"){
-            echo '<img class="img" src="../styles/division.png" alt="">';
+            echo '<img class="img" src="../styles/division.png" alt="division" title="division">';
         }
         ?></p>
         <p class="calcul"><?php echo $_SESSION["nombre2"]; ?></p>
