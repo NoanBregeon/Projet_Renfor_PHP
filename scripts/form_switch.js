@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (showingRegister) {
             formLogin.style.display = 'none';
             formRegister.style.display = 'block';
-            formTitle.innerText = 'Créer un compte ✍️';
-            toggleBtn.innerText = 'Se connecter 🔐';
+            formTitle.innerText = 'Créer un compte';
+            toggleBtn.innerText = 'Se connecter';
             toggleBtn.dataset.state = "register";
         } else {
             formLogin.style.display = 'block';
             formRegister.style.display = 'none';
-            formTitle.innerText = 'Connexion 🔐';
-            toggleBtn.innerText = 'Créer un compte ✍️';
+            formTitle.innerText = 'Connexion';
+            toggleBtn.innerText = 'Créer un compte';
             toggleBtn.dataset.state = "login";
         }
     });
