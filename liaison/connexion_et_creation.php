@@ -69,37 +69,43 @@ if (isset($_POST['register'])) {
 <body>
 <div class="header"></div>
 <div class="connexion-container">
-    <h2 id="form-title"><?= $active_form === 'register' ? 'Créer un compte' : 'Connexion' ?></h2>
+    <h2 class="connexion-title" id="form-title"><?= $active_form === 'register' ? 'Créer un compte' : 'Connexion' ?></h2>
 
     <?php if (isset($_GET['inscription']) && $_GET['inscription'] === 'ok'): ?>
-        <p style="color:green">Compte créé avec succès ! Vous pouvez vous connecter.</p>
+        <p class="success-message" id="success-message" style="display: none;">Compte créé avec succès ! Vous pouvez vous connecter.</p>
     <?php endif; ?>
 
     <!-- Formulaire Connexion -->
     <form method="POST" class="connexion-form" id="form-login" <?= $active_form === 'register' ? 'style="display:none;"' : '' ?>>
         <?php if ($message_connexion): ?>
-            <p style="color:red"><?= ($message_connexion) ?></p>
+            <p class="error-message" id="login-error" style="display: none;"><?= ($message_connexion) ?></p>
         <?php endif; ?>
         <input type="hidden" name="login" value="1">
-        <label>Nom d’utilisateur :</label><br>
-        <input type="text" name="username_login" required><br>
+        <label>Nom d’utilisateur :</label>
+        <input type="text" name="username_login" required>
+
         <label>Mot de passe :</label><br>
         <input type="password" name="password_login" required><br>
-        <button type="submit" class="button">Se connecter</button>
+
+        <button type="submit" class="button_connexion">Se connecter</button>
     </form>
 
     <!-- Formulaire Création -->
     <form method="POST" class="connexion-form" id="form-register" <?= $active_form === 'login' ? 'style="display:none;"' : '' ?>>
         <?php if ($message_creation): ?>
-            <p style="color:red"><?= ($message_creation) ?></p>
+            <p class="error-message" id="register-error" style="display: none;"><?= ($message_creation) ?></p>
         <?php endif; ?>
+
         <input type="hidden" name="register" value="1">
-        <label>Nom d’utilisateur :</label><br>
-        <input type="text" name="username_register" required><br>
-        <label>Mot de passe :</label><br>
-        <input type="password" name="password_register" required><br>
-        <label>Confirmer le mot de passe :</label><br>
-        <input type="password" name="password_confirm" required><br>
+        <label>Nom d’utilisateur :</label>
+        <input type="text" name="username_register" required>
+
+        <label>Mot de passe :</label>
+        <input type="password" name="password_register" required>
+
+        <label>Confirmer le mot de passe :</label>
+        <input type="password" name="password_confirm" required>
+
         <button type="submit" class="button">Créer le compte</button>
     </form>
 
