@@ -667,7 +667,7 @@ tr {
 .streak {
     margin: 0px 50px 0px 0px;
     height: 200px;
-    width: 1%;
+    width: 00px;
     font-size: 30px;
     background-color: #ff88dc;
     border: 5px solid rgb(255, 192, 103);
