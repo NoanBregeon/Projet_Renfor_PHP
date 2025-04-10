@@ -74,7 +74,7 @@ if(!isset($_GET["reponse"])){
                     echo $trophyImg;
                     echo '<p class="classement_user">' . $resultats1["username"] . "</p>";
                     echo '<p>:</p>';
-                    '<p class="classement_streak">' . $resultats1["streak"] . "</p>";
+                    echo '<p class="classement_streak">' . $resultats1["streak"] . "</p>";
                     echo "</div></br>";
                     $position++;
                 }
