@@ -31,7 +31,7 @@ if(isset($_POST["validation"])){
             echo "mdp != confirmation";
         }
     }else{
-        echo "ca existe deja";
+        echo "Cet utilisateur existe déjà";
     }
 }
 
@@ -42,19 +42,33 @@ if(isset($_POST["validation"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gabou quiz</title>
-    <link rel="stylesheet" href="../styles/styles.css?v=0">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
     <div class="header"></div>
-    <form action="" method="post">
-        <input type="hidden" name="validation">
-        <input type="text" name="nom" required>
-        <input type="password" name="mdp" id="" required>
-        <input type="password" name="confirmMdp" id="" required>
-        <input type="submit" value="crée">
-    </form>
-    <a href="connexionSansChatGPT.php">ce connecter</a>
-    <a href="../index.php">retour</a>
+    <div class="connexion-container">
+        <h1 class="connexion-title">Créer un compte</h1>
+        <div class="connexion-form">
+            <form action="" method="post">
+            <input type="hidden" name="validation">
+            
+            <label for="nom">Nom d'utilisateur</label>
+            <input type="text" name="nom" id="nom" required>
+            
+            <label for="mdp">Mot de passe</label>
+            <input type="password" name="mdp" id="mdp" required>
+            
+            <input type="submit" class="button_connexion" value="Se connecter">
+            </form>
+        </div>
+    <div class="form-toggle">
+        <a href="connexionSansChatGPT.php" class="button_form">Se connecter</a>
+    </div>
+    <div class="form-toggle">
+        <a href="../index.php" class="button_form">Retour</a>
+    </div>
+    </div>
+    
     <div class="footer"></div>
 </body>
 </html>

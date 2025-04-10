@@ -26,14 +26,28 @@ if(isset($_POST["validation"])){
 </head>
 <body>
     <div class="header"></div>
-    <form action="" method="post">
-        <input type="hidden" name="validation">
-        <input type="text" name="nom" required>
-        <input type="password" name="mdp" id="" required>
-        <input type="submit" value="connection">
-    </form>
-    <a href="creationSansChatGPT.php">crée un compte</a>
-    <a href="../index.php">retour</a>
+    <div class="connexion-container">
+        <h1 class="connexion-title">Connexion</h1>
+        <div class="connexion-form">
+            <form action="" method="post">
+                <input type="hidden" name="validation">
+                
+                <label for="nom">Nom d'utilisateur</label>
+                <input type="text" name="nom" id="nom" required>
+                
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="mdp" id="mdp" required>
+                
+                <input type="submit" class="button_connexion" value="Se connecter">
+            </form>
+        </div>
+        <div class="form-toggle">
+            <a href="creationSansChatGPT.php" class="button_form">Créer un compte</a>
+        </div>
+        <div class="form-toggle">
+            <a href="../index.php" class="button_form">Retour</a>
+        </div>
+    </div>
     <div class="footer"></div>
 </body>
 </html>
