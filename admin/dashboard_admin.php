@@ -41,18 +41,20 @@ $users = $stmt->fetchAll();
                     <th>Progression</th>
                 </tr>
             </thead>
+            <!--Génération du tableau avec les données des utilisateurs-->
             <tbody>
                 <?php foreach ($users as $u): 
                     $total = $u['progression_addition'] + $u['progression_soustraction'] + $u['progression_multiplication'] + $u['progression_division'];
                     $pourcentage = round(($total / 240) * 100);
                     ?>
                 <tr>
-                    <td class="dash_td"><?= htmlspecialchars($u['username']) ?></td>
+                    <td class="dash_td"><?= htmlspecialchars($u['username']) ?></td><!-- Utilisation de htmlspecialchars pour éviter les injections XSS -->
                     <td class="dash_td"><?= $u['progression_addition'] ?>/60</td>
                     <td class="dash_td"><?= $u['progression_soustraction'] ?>/60</td>
                     <td class="dash_td"><?= $u['progression_multiplication'] ?>/60</td>
                     <td class="dash_td"><?= $u['progression_division'] ?>/60</td>
                     <td class="total-cell"><?= $total ?>/240</td>
+                    <!-- Calcul du pourcentage de progression -->
                     <td>
                         <div class="progression-bar">
                             <div class="barre-globale-remplie-verticale" style="width: <?= $pourcentage ?>%; height: 100%;"></div>
