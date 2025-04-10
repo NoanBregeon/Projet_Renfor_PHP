@@ -56,7 +56,7 @@ if(!isset($_GET["reponse"])){
             <h4>Classement</h4>
             <div class="grid_classement">
                 <?php
-                $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak LIMIT 3';
+                $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak DESC LIMIT 3';
                 $temp1 = $pdo->query($sql1);
                 $position = 1;
 
