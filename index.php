@@ -71,7 +71,9 @@ if ($percent_global == 100) $couleur = "#00c200";
 
                 <!-- Colonne droite : barre de progression verticale -->
             </div>
+            
             <div class="progress-global">
+            
                 <div class="barre-texte-verticale">
                     <?= $total_fait ?>/<?= $total_questions ?><br>
                     Progression

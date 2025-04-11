@@ -51,21 +51,15 @@ if(isset($_POST["validation"])){
         <div class="connexion-form">
             <form action="" method="post">
             <input type="hidden" name="validation">
-            
             <label for="nom">Nom d'utilisateur</label>
             <input type="text" name="nom" id="nom" required>
-            
             <label for="mdp">Mot de passe</label>
             <input type="password" name="mdp" id="mdp" required>
-            
-            <label for="confirmMdp">Confirmer mot de passe</label>
-            <input type="password" name="confirmMdp" id="mdp" required>
-            
-            <input type="submit" class="button_connexion" value="Se connecter">
+            <input type="submit" class="button_connexion" value="Créer">
             </form>
         </div>
     <div class="form-toggle">
-        <a href="connexion.php" class="button_form">Se connecter</a>
+        <a href="connexionSansChatGPT.php" class="button_form">Se connecter</a>
     </div>
     <div class="form-toggle">
         <a href="../index.php" class="button_form">Retour</a>
