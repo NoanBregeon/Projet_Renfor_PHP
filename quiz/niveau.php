@@ -11,13 +11,8 @@ if (!isset($_GET["reponse"])){
     $niveau=$_SESSION["niveau"];
 }
 $type=$_GET["type"];
-if($niveau-$_SESSION["dificulty"]>21){
+if($niveau-$_SESSION["dificulty"]>=21){
     $_SESSION["dificulty"]=$_SESSION["dificulty"]+20;
-    if($_SESSION["niv"]<1){
-        $_SESSION["niv"]=$_SESSION["niv"]+1;
-    }else{
-        $_SESSION["niv"]=1;
-    }
     
 }
 if($_SESSION["niv"]==1){$_SESSION["dificulty"]=0;}
@@ -64,7 +59,7 @@ $resultats=$temp->fetch();
 </head>
 <body>
     <form action="quiz.php">
-        <h2>Question numero : <?php echo $_GET["question"]-$x; ?></h2>
+        <h2 class=<?php echo '"niv'.$resultats["difficulty"].'"' ?>>Question numero : <?php echo $_GET["question"]-$x; ?></h2>
         <div class="calcul_div">
             <p class="calcul_nb1"><?php echo $resultats["nombre1"]; ?></p>
         <p class="img_ope"><?php 
