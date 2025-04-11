@@ -3,10 +3,10 @@ session_start();
 require_once 'liaison/Bdd.php';
 require_once 'liaison/maj_session.php';
 
-$addition = $_SESSION['addition'] ?? 0;
-$soustraction = $_SESSION['soustraction'] ?? 0;
-$multiplication = $_SESSION['multiplication'] ?? 0;
-$division = $_SESSION['division'] ?? 0;
+$addition = $_SESSION['valid_addition'] ?? 0;
+$soustraction = $_SESSION['valid_soustraction'] ?? 0;
+$multiplication = $_SESSION['valid_multiplication'] ?? 0;
+$division = $_SESSION['valid_division'] ?? 0;
 
 $total_fait = $addition + $soustraction + $multiplication + $division;
 

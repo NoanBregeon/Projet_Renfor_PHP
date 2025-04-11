@@ -25,5 +25,9 @@ if ($user) {
     $_SESSION['soustraction'] = $user['progression_soustraction'];
     $_SESSION['multiplication'] = $user['progression_multiplication'];
     $_SESSION['division'] = $user['progression_division'];
+    $_SESSION['valid_addition'] = $user['valid_addition'];
+    $_SESSION['valid_soustraction'] = $user['valid_soustraction'];
+    $_SESSION['valid_multiplication'] = $user['valid_multiplication'];
+    $_SESSION['valid_division'] = $user['valid_division'];
 }
 ?>
