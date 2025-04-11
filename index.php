@@ -88,7 +88,7 @@ if ($percent_global == 100) $couleur = "#00c200";
             <h1>Bienvenue</h1>
             <div>
                 <a class="button" id="connexion" href='liaison/connexion.php'>Connexion</a><br>
-                <a class="button" id="connexion" href='liaison/creationSansChatGPT.php'>crée un compte</a><br>
+                <a class="button" id="connexion" href='liaison/creation.php'>crée un compte</a><br>
             </div>
             <div class="footer"></div>
         <?php endif; ?>
