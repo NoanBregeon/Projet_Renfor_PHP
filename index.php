@@ -3,16 +3,16 @@ session_start();
 require_once 'liaison/Bdd.php';
 require_once 'liaison/maj_session.php';
 
-$addition = $_SESSION['addition'] ?? 0;
-$soustraction = $_SESSION['soustraction'] ?? 0;
-$multiplication = $_SESSION['multiplication'] ?? 0;
-$division = $_SESSION['division'] ?? 0;
+$addition = $_SESSION['valid_addition'] ?? 0;
+$soustraction = $_SESSION['valid_soustraction'] ?? 0;
+$multiplication = $_SESSION['valid_multiplication'] ?? 0;
+$division = $_SESSION['valid_division'] ?? 0;
 
 $total_fait = $addition + $soustraction + $multiplication + $division;
 
 
 // Total attendu : 240 questions (60 par opération)
-$total_questions = 240;
+$total_questions = 236  ;
 $percent_global = min(100, round(($total_fait / $total_questions) * 100));
 
 // Couleur dynamique de la barre
@@ -75,7 +75,7 @@ if ($percent_global == 100) $couleur = "#00c200";
             <div class="progress-global">
             
                 <div class="barre-texte-verticale">
-                    <?= $total_fait ?>/<?= $total_questions ?><br>
+                    <?= $total_fait-4 ?>/<?= $total_questions ?><br>
                     Progression
                 </div>
                 <div class="barre-globale-verticale">

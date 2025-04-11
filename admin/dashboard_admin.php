@@ -10,7 +10,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 // Récupération de tous les utilisateurs sauf les admins
-$stmt = $pdo->prepare("SELECT username, progression_addition, progression_soustraction, progression_multiplication, progression_division 
+$stmt = $pdo->prepare("SELECT username, valid_addition, valid_soustraction, valid_multiplication, valid_division 
 FROM users WHERE roles != 'admin'");
 $stmt->execute();
 $users = $stmt->fetchAll();
@@ -44,15 +44,15 @@ $users = $stmt->fetchAll();
             <!--Génération du tableau avec les données des utilisateurs-->
             <tbody>
                 <?php foreach ($users as $u): 
-                    $total = $u['progression_addition'] + $u['progression_soustraction'] + $u['progression_multiplication'] + $u['progression_division'];
+                    $total = $u['valid_addition'] + $u['valid_soustraction'] + $u['valid_multiplication'] + $u['valid_division'];
                     $pourcentage = round(($total / 240) * 100);
                     ?>
                 <tr>
                     <td class="dash_td"><?= htmlspecialchars($u['username']) ?></td><!-- Utilisation de htmlspecialchars pour éviter les injections XSS -->
-                    <td class="dash_td"><?= $u['progression_addition'] ?>/60</td>
-                    <td class="dash_td"><?= $u['progression_soustraction'] ?>/60</td>
-                    <td class="dash_td"><?= $u['progression_multiplication'] ?>/60</td>
-                    <td class="dash_td"><?= $u['progression_division'] ?>/60</td>
+                    <td class="dash_td"><?= $u['valid_addition'] ?>/60</td>
+                    <td class="dash_td"><?= $u['valid_soustraction'] ?>/60</td>
+                    <td class="dash_td"><?= $u['valid_multiplication'] ?>/60</td>
+                    <td class="dash_td"><?= $u['valid_division'] ?>/60</td>
                     <td class="total-cell"><?= $total ?>/240</td>
                     <!-- Calcul du pourcentage de progression -->
                     <td>
