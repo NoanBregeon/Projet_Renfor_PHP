@@ -92,7 +92,7 @@ $resultats=$temp->fetch();
                 $_SESSION["niveau"]=$_GET["question"]+1;
                 if($_GET["question"]-$x==$_SESSION[$_GET["type"]]){
                     $_SESSION[$_GET["type"]]=$_SESSION[$_GET["type"]]+1;
-                    $sql2= 'UPDATE users SET progression_'.$_GET["type"].'='.$_SESSION[$_GET["type"]].' WHERE id='.$_SESSION["user_id"];
+                    $sql2= 'UPDATE users SET progression_'.$_GET["type"].'='.$_SESSION[$_GET["type"]].', valid_'.$_GET["type"].'=valid_'.$_GET["type"].'+1 WHERE id='.$_SESSION["user_id"];
                     $pdo->exec($sql2);
                 }
 
