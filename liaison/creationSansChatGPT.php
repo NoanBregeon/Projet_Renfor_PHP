@@ -51,14 +51,11 @@ if(isset($_POST["validation"])){
         <div class="connexion-form">
             <form action="" method="post">
             <input type="hidden" name="validation">
-            
             <label for="nom">Nom d'utilisateur</label>
             <input type="text" name="nom" id="nom" required>
-            
             <label for="mdp">Mot de passe</label>
             <input type="password" name="mdp" id="mdp" required>
-            
-            <input type="submit" class="button_connexion" value="Se connecter">
+            <input type="submit" class="button_connexion" value="Créer">
             </form>
         </div>
     <div class="form-toggle">
