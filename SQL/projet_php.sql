@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 11 avr. 2025 à 11:41
+-- Généré le : ven. 11 avr. 2025 à 14:03
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -43,50 +43,8 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- Déchargement des données de la table `questions`
 --
 
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `roles` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'user',
-  `progression_addition` int DEFAULT '1',
-  `valid_addition` int DEFAULT '0',
-  `progression_soustraction` int DEFAULT '1',
-  `valid_soustraction` int DEFAULT '0',
-  `progression_division` int DEFAULT '1',
-  `valid_division` int DEFAULT '0',
-  `progression_multiplication` int DEFAULT '1',
-  `valid_multiplication` int DEFAULT '0',
-  `streak` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `roles`, `progression_addition`, `valid_addition`, `progression_soustraction`, `valid_soustraction`, `progression_division`, `valid_division`, `progression_multiplication`, `valid_multiplication`, `streak`) VALUES
-(1, 'Admin', 'Admin1234', 'admin', 60, 60, 60, 60, 60, 60, 60, 60, 0),
-(2, 'TEST', 'TEST', 'user', 1, 0, 1, 0, 1, 0, 1, 0, 0),
-(3, 'enfant1', 'enfant1', 'user', 10, 0, 8, 0, 40, 0, 28, 0, 0),
-(4, 'enfant2', 'enfant2', 'user', 28, 0, 5, 0, 40, 0, 30, 0, 0);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-INSERT INTO `questions` VALUES
-(`id`, `operation_type`, `nombre1`, `nombre2`, `correct_answer`, `reste`, `difficulty`),
+INSERT INTO `questions` (`id`, `operation_type`, `nombre1`, `nombre2`, `correct_answer`, `reste`, `difficulty`) VALUES
+(0, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 'addition', 10, 1, 11, NULL, 1),
 (2, 'addition', 5, 4, 9, NULL, 1),
 (3, 'addition', 3, 8, 11, NULL, 1),
@@ -267,3 +225,40 @@ INSERT INTO `questions` VALUES
 (178, 'multiplication', 13, 1, 13, NULL, 3),
 (179, 'multiplication', 6, 9, 54, NULL, 3),
 (180, 'multiplication', 2, 3, 6, NULL, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `roles` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'user',
+  `progression_addition` int DEFAULT '1',
+  `valid_addition` int DEFAULT '0',
+  `progression_soustraction` int DEFAULT '1',
+  `valid_soustraction` int DEFAULT '0',
+  `progression_division` int DEFAULT '1',
+  `valid_division` int DEFAULT '0',
+  `progression_multiplication` int DEFAULT '1',
+  `valid_multiplication` int DEFAULT '0',
+  `streak` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `roles`, `progression_addition`, `valid_addition`, `progression_soustraction`, `valid_soustraction`, `progression_division`, `valid_division`, `progression_multiplication`, `valid_multiplication`, `streak`) VALUES
+(1, 'Admin', 'Admin1234', 'admin', 60, 60, 60, 60, 60, 60, 60, 60, 0);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
