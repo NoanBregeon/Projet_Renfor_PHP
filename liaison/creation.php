@@ -2,36 +2,29 @@
 session_start();
 include("Bdd.php");
 $connection="non";
-$x=0;
+$erreur="";
 if(isset($_POST["validation"])){
-    $sql1= 'SELECT * FROM users';
+    $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'"';
     $temp1 = $pdo->query($sql1);
-    while($resultats1 = $temp1->fetch()) {
-        if($resultats1["username"]==$_POST["nom"]){
-        $x=$x+1;
-    }
-
-    }
-    if($x==0){
+    $resultats1 = $temp1->fetch();
+    if(!isset($resultats1["username"])){
         if($_POST["mdp"]==$_POST["confirmMdp"]){
             $sql3= 'INSERT INTO users (username, password, roles, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES ("'.$_POST["nom"].'", "'.$_POST["mdp"].'", "user", 1, 1, 1, 1)';
             $pdo->exec($sql3);
-
-            $sql1= 'SELECT * FROM users';
+            $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'" AND password="'.$_POST["mdp"].'"';
             $temp1 = $pdo->query($sql1);
-            while($resultats1 = $temp1->fetch()) {
-                if($resultats1["username"]==$_POST["nom"] && $resultats1["password"]==$_POST["mdp"]){
-                    $connection="ok";
-                    $_SESSION["user_id"]=$resultats1["id"];
-                    require_once 'maj_session.php';
-                    header("Location: ../index.php");
-                }
+            $resultats1 = $temp1->fetch();
+            if( isset($resultats1["username"]) &&  isset($resultats1["password"])){
+                $connection="ok";
+                $_SESSION["user_id"]=$resultats1["id"];
+                require_once 'maj_session.php';
+                header("Location: ../index.php");
             }
         }else{
-            echo "mdp != confirmation";
+            $erreur=1;
         }
     }else{
-        echo '<p class="user_util">Cet utilisateur existe déjà</p>';
+        $erreur=2;
     }
 }
 
@@ -57,6 +50,13 @@ if(isset($_POST["validation"])){
             <input type="password" name="mdp" id="mdp" required>
             <label for="confirmMdp">Confirme mot de passe</label>
             <input type="password" name="confirmMdp" id="mdp" required>
+            <?php
+            if($erreur==1){
+                echo '<p class="user_utile">Les mots de passe ne sont pas identiques</p>';
+            }elseif($erreur==2){
+                echo '<p class="user_util">Cet utilisateur existe déjà</p>';
+            }
+            ?>
             <input type="submit" class="button_connexion" value="Créer">
             </form>
         </div>

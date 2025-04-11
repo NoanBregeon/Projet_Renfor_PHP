@@ -364,8 +364,8 @@ h1, h2 {
 
 .valider {
     margin: 75px 50px 75px 0px;
-    background-color: #09ff00;
-    border: 5px solid #23b123;
+    background-color: #c3ffcb;
+    border: 5px solid #69e969;
     border-radius: 30px;
     font-size: 40px;
     text-decoration: none;
@@ -914,7 +914,13 @@ tr {
 }
 
 .user_util {
+    font-size: 30px;
     color: red;
     text-align: center;
 }
 
+.user_utile {
+    font-size: 20px;
+    color: red;
+    text-align: center;
+}
