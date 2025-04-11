@@ -1,33 +1,43 @@
 <?php
 session_start();
 include("Bdd.php");
-$connection="non";
-$erreur="";
-if(isset($_POST["validation"])){
-    $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'"';
-    $temp1 = $pdo->query($sql1);
-    $resultats1 = $temp1->fetch();
-    if(!isset($resultats1["username"])){
-        if($_POST["mdp"]==$_POST["confirmMdp"]){
-            $sql3= 'INSERT INTO users (username, password, roles, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES ("'.$_POST["nom"].'", "'.$_POST["mdp"].'", "user", 1, 1, 1, 1)';
-            $pdo->exec($sql3);
-            $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'" AND password="'.$_POST["mdp"].'"';
-            $temp1 = $pdo->query($sql1);
-            $resultats1 = $temp1->fetch();
-            if( isset($resultats1["username"]) &&  isset($resultats1["password"])){
-                $connection="ok";
-                $_SESSION["user_id"]=$resultats1["id"];
-                require_once 'maj_session.php';
-                header("Location: ../index.php");
+
+$erreur = "";
+
+if (isset($_POST["validation"])) {
+    try {
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+        $stmt->execute([':username' => $_POST["nom"]]);
+        $resultats1 = $stmt->fetch();
+
+        if (!$resultats1) {
+            if ($_POST["mdp"] === $_POST["confirmMdp"]) {
+                $stmt = $pdo->prepare('INSERT INTO users (username, password, roles, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (:username, :password, "user", 1, 1, 1, 1)');
+                $stmt->execute([
+                    ':username' => $_POST["nom"],
+                    ':password' => password_hash($_POST["mdp"], PASSWORD_DEFAULT)
+                ]);
+
+                $stmt = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+                $stmt->execute([':username' => $_POST["nom"]]);
+                $resultats1 = $stmt->fetch();
+
+                if ($resultats1) {
+                    $_SESSION["user_id"] = $resultats1["id"];
+                    require_once 'maj_session.php';
+                    header("Location: ../index.php");
+                    exit;
+                }
+            } else {
+                $erreur = "Les mots de passe ne sont pas identiques.";
             }
-        }else{
-            $erreur=1;
+        } else {
+            $erreur = "Cet utilisateur existe déjà.";
         }
-    }else{
-        $erreur=2;
+    } catch (PDOException $e) {
+        $erreur = "Erreur de connexion à la base de données : " . $e->getMessage();
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -43,31 +53,26 @@ if(isset($_POST["validation"])){
         <h1 class="connexion-title">Créer un compte</h1>
         <div class="connexion-form">
             <form action="" method="post">
-            <input type="hidden" name="validation">
-            <label for="nom">Nom d'utilisateur</label>
-            <input type="text" name="nom" id="nom" required>
-            <label for="mdp">Mot de passe</label>
-            <input type="password" name="mdp" id="mdp" required>
-            <label for="confirmMdp">Confirme mot de passe</label>
-            <input type="password" name="confirmMdp" id="mdp" required>
-            <?php
-            if($erreur==1){
-                echo '<p class="user_utile">Les mots de passe ne sont pas identiques</p>';
-            }elseif($erreur==2){
-                echo '<p class="user_util">Cet utilisateur existe déjà</p>';
-            }
-            ?>
-            <input type="submit" class="button_connexion" value="Créer">
+                <input type="hidden" name="validation">
+                <label for="nom">Nom d'utilisateur</label>
+                <input type="text" name="nom" id="nom" required>
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="mdp" id="mdp" required>
+                <label for="confirmMdp">Confirmez le mot de passe</label>
+                <input type="password" name="confirmMdp" id="confirmMdp" required>
+                <?php if (!empty($erreur)): ?>
+                    <p class="user_utile"><?= htmlspecialchars($erreur) ?></p>
+                <?php endif; ?>
+                <input type="submit" class="button_connexion" value="Créer">
             </form>
         </div>
-    <div class="form-toggle">
-        <a href="connexion.php" class="button_form">Se connecter</a>
+        <div class="form-toggle">
+            <a href="connexion.php" class="button_form">Se connecter</a>
+        </div>
+        <div class="form-toggle">
+            <a href="../index.php" class="button_form">Retour</a>
+        </div>
     </div>
-    <div class="form-toggle">
-        <a href="../index.php" class="button_form">Retour</a>
-    </div>
-    </div>
-    
     <div class="footer"></div>
 </body>
 </html>
