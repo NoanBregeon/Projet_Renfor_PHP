@@ -1,130 +1,156 @@
 <?php
-session_start();
-
-$type = $_GET['type'] ?? '';
-$valid_types = ['addition', 'soustraction', 'multiplication', 'division'];
-
-if (!in_array($type, $valid_types)) {
-    echo "<p>❌ Type d'opération invalide.</p>";
-    exit;
+if(!isset($_SESSION["streak"])){
+    $_SESSION["streak"]=0;
 }
-
-// Initialiser ou réinitialiser si demandé
-if (isset($_GET['reset'])) {
-    $_SESSION['infini'][$type]['score'] = 0;
-    $_SESSION['infini'][$type]['niveau'] = 1;
-    header("Location: infini.php?type=" . urlencode($type));
-    exit;
-}
-
-if (!isset($_SESSION['infini'][$type])) {
-    $_SESSION['infini'][$type] = ['score' => 0, 'niveau' => 1];
-}
-
-$niveau = $_SESSION['infini'][$type]['niveau'];
-
-// Génération de la question
-function generer($type, $niveau) {
-    $max = min(10 + $niveau * 2, 100);
-    $min = 1;
-
-    do {
-        $a = rand($min, $max);
-        $b = rand($min, $max);
-    } while ($type === 'division' && ($b === 0 || $a % $b !== 0));
-
-    return [$a, $b];
-}
-
-$message = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_answer = (int)$_POST['answer'];
-    $a = (int)$_POST['a'];
-    $b = (int)$_POST['b'];
-    $type = $_POST['type'];
-
-    $correct = match($type) {
-        'addition' => $a + $b,
-        'soustraction' => $a - $b,
-        'multiplication' => $a * $b,
-        'division' => (int)($a / $b),
-    };
-
-    if ($user_answer === $correct) {
-        $_SESSION['infini'][$type]['score']++;
-        $_SESSION['infini'][$type]['niveau']++;
-        $message = "✅ Bonne réponse !";
-    } else {
-        $message = "❌ Mauvaise réponse. La bonne réponse était $correct.";
-        $_SESSION['infini'][$type]['niveau'] = 1;
+if(!isset($_GET["reponse"])){
+    $type=["addition", "soustraction", "division", "multiplication"];
+    $x=rand(0,3);
+    if($_GET["type"]=="tout"){
+        $_SESSION["typeinfini"]=$type[$x];
+        $_SESSION["reset"]="tout";
+    }else{
+        $_SESSION["typeinfini"]=$_GET["type"];
+        $_SESSION["reset"]=$_GET["type"];
     }
 
-    $niveau = $_SESSION['infini'][$type]['niveau'];
+
+    if($_SESSION["typeinfini"]=="addition"){
+        $_SESSION["nombre1"]=rand(1, 200);
+        $_SESSION["nombre2"]=rand(1, 200);
+        $_SESSION["resultatinfini"]=$_SESSION["nombre1"]+$_SESSION["nombre2"];
+    }
+    if($_SESSION["typeinfini"]=="soustraction"){
+        $_SESSION["nombre1"]=rand(100, 200);
+        $_SESSION["nombre2"]=rand(1, 100);
+        $_SESSION["resultatinfini"]=$_SESSION["nombre1"]-$_SESSION["nombre2"];
+    }
+    if($_SESSION["typeinfini"]=="division"){
+        $_SESSION["nombre1"]=rand(100, 200);
+        $_SESSION["nombre2"]=rand(1, 100);
+        while($_SESSION["nombre1"]%$_SESSION["nombre2"] != 0){
+            $_SESSION["nombre1"]=rand(50, 100);
+            $_SESSION["nombre2"]=rand(1, 50);
+        }
+        $_SESSION["resultatinfini"]=intdiv($_SESSION["nombre1"], $_SESSION["nombre2"]);
+    }
+    if($_SESSION["typeinfini"]=="multiplication"){
+        $_SESSION["nombre1"]=rand(1, 12);
+        $_SESSION["nombre2"]=rand(1, 12);
+        $_SESSION["resultatinfini"]=$_SESSION["nombre1"]*$_SESSION["nombre2"];
+    }
+    
 }
-
-[$a, $b] = generer($type, $niveau);
-
-$symbol = match($type) {
-    'addition' => '+',
-    'soustraction' => '-',
-    'multiplication' => '×',
-    'division' => '÷',
-};
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Infini <?= ucfirst($type) ?></title>
-    <link rel="stylesheet" href="../layout/styles.css">
-    <style>
-        .infini-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .question {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        input[type="number"] {
-            font-size: 20px;
-            padding: 10px;
-            width: 100px;
-        }
-
-        .score {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #5e17eb;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-<div class="infini-container">
-    <h1>Mode Infini : <?= ucfirst($type) ?> 🔁</h1>
-    <div class="score">Score actuel : <?= $_SESSION['infini'][$type]['score'] ?></div>
+    <h2>Mode Infini</h2>
+    <div class="container">
+    <?php if($_GET["type"]=="tout"): ?>
+        <div class="classement">
+            <h4>Classement</h4>
+            <div class="grid_classement">
+                <?php
+                $sql1= 'SELECT * FROM users WHERE roles="user" ORDER BY streak DESC LIMIT 3';
+                $temp1 = $pdo->query($sql1);
+                $position = 1;
 
-    <?php if ($message): ?>
-        <p><strong><?= htmlspecialchars($message) ?></strong></p>
-    <?php endif; ?>
+                while($resultats1 = $temp1->fetch()) {
+                    $trophyClass = "trophy-position-" . $position;
+                    $trophyImg = "";
+                    if ($position == 1) {
+                        $trophyImg = '<img src="../styles/trophy-gold.png" alt="1" class="trophy-icon">';
+                    } elseif ($position == 2) {
+                        $trophyImg = '<img src="../styles/trophy-silver.png" alt="2" class="trophy-icon">';
+                    } elseif ($position == 3) {
+                        $trophyImg = '<img src="../styles/trophy-bronze.png" alt="3" class="trophy-icon">';
+                    }
+                    echo '<div class="div_classement ' . $trophyClass . '">';
+                    echo $trophyImg;
+                    echo '<p class="classement_user">' . $resultats1["username"] . "</p>";
+                    echo '<p>:</p>';
+                    echo '<p class="classement_streak">' . $resultats1["streak"] . "</p>";
+                    echo "</div></br>";
+                    $position++;
+                }
+            ?>
+            </div>
+            
+        </div>
+    <?php endif ?>
+    <form class="grid_quiz" action="quiz.php">
+        <div class="calcul_div">
+            <p class="calcul"><?php echo $_SESSION["nombre1"]; ?></p>
+        <p><?php 
+        if( $_SESSION["typeinfini"]=="addition"){
+            echo '<img class="img" src="../styles/plus.png" alt="plus" title="plus">';
+        }elseif( $_SESSION["typeinfini"]=="soustraction"){
+            echo '<img class="img" src="../styles/remove.png" alt="moins" title="moins">';
+        }elseif( $_SESSION["typeinfini"]=="multiplication"){
+            echo '<img class="img" src="../styles/multiplication.png" alt="multiplication" title="multiplication">';
+        }elseif( $_SESSION["typeinfini"]=="division"){
+            echo '<img class="img" src="../styles/division.png" alt="division" title="division">';
+        }
+        ?></p>
+        <p class="calcul"><?php echo $_SESSION["nombre2"]; ?></p>
+        <p class="calcul">=</p>
+        <input class="barre" type="number" name="reponse" required value=<?php if(isset($_GET["reponse"])){echo '"'.$_GET["reponse"].'"';} ?> >
+        <input type="hidden" name="type" value=<?php echo '"'.$_SESSION["typeinfini"].'"'; ?>>
+        <input type="hidden" name="infini" value=1>
+        </div>
+        <?php
+        if (isset($_GET["reponse"])){
+            if($_GET["reponse"]==$_SESSION["resultatinfini"]){
+                echo '<div class="quiz">Bien joué</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
+            }else{
+                echo '<div class="quiz">Perdu la bonne reponse attendu est : '.$_SESSION["resultatinfini"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
+            }
+            
+            if(isset($_GET["suivant"])){
+                header('Location: quiz.php?type='.$_SESSION["reset"].'&infini=1');
+                if($_GET["reponse"]==$_SESSION["resultatinfini"]){
+                    $_SESSION["streak"]=$_SESSION["streak"]+1;
 
-    <form method="POST">
-        <div class="question"><?= "$a $symbol $b = ?" ?></div>
-        <input type="hidden" name="a" value="<?= $a ?>">
-        <input type="hidden" name="b" value="<?= $b ?>">
-        <input type="hidden" name="type" value="<?= $type ?>">
-        <input type="number" name="answer" required>
-        <br><br>
-        <button type="submit" class="button">Valider</button>
+                }else{
+                    $_SESSION["streak"]=0;
+
+                }
+            }
+        }
+        ?>
     </form>
-
-    <br>
-    <a href="infini.php?type=<?= $type ?>&reset=1" class="button">🔄 Réinitialiser</a>
-    <a href="quiz.php?type=<?= $type ?>" class="button">⬅ Retour au quiz</a>
-</div>
+    <?php if($_GET["type"]=="tout"): ?>
+    <div class="streak">
+        <h4>Chaine !</h4>
+        <?php
+        $streakClass = "streak-lvl1";
+        if($_SESSION["streak"] >= 1 && $_SESSION["streak"] < 5) {
+            $streakClass = "streak-lvl2";
+        } elseif($_SESSION["streak"] >= 5 && $_SESSION["streak"] < 10) {
+            $streakClass = "streak-lvl3";
+        } elseif($_SESSION["streak"] >= 10 && $_SESSION["streak"] < 15) {
+            $streakClass = "streak-lvl4";
+        } elseif($_SESSION["streak"] >= 15 && $_SESSION["streak"] < 20) {
+            $streakClass = "streak-lvl5";
+        } elseif($_SESSION["streak"] >= 20) {
+            $streakClass = "streak-lvl6";
+        }
+        echo '<p class="p_streak '.$streakClass.'">'.$_SESSION["streak"]."</p>";
+        $sql2= 'SELECT streak FROM users WHERE id='.$_SESSION["user_id"];
+        $temp2 = $pdo->query($sql2);
+        $resultats2=$temp2->fetch();
+        if($resultats2["streak"] < $_SESSION["streak"]){
+            $sql3= 'UPDATE users SET streak='.$_SESSION["streak"].' WHERE id='.$_SESSION["user_id"];
+            $pdo->exec($sql3);
+        }
+        ?>
+    </div>
+    </div>
+    <?php endif ?>
 </body>
 </html>
