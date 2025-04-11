@@ -52,7 +52,7 @@ if(isset($_POST["validation"])){
             <input type="password" name="confirmMdp" id="mdp" required>
             <?php
             if($erreur==1){
-                echo "mdp != confirmation";
+                echo '<p class="user_utile">Les mots de passe ne sont pas identiques</p>';
             }elseif($erreur==2){
                 echo '<p class="user_util">Cet utilisateur existe déjà</p>';
             }
