@@ -52,7 +52,7 @@ include("../liaison/maj_session.php")
                 include("niveau.php");
             }
             elseif(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"]) && isset($_GET["infini"])){
-                include("infiniPasFaitPartChatGPT.php");
+                include("infini.php");
             }
             if(isset($_GET["niv"])){
                 echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';
