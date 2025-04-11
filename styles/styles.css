@@ -362,6 +362,27 @@ h1, h2 {
     color: black;
 }
 
+.valider {
+    margin: 75px 50px 75px 0px;
+    background-color: #09ff00;
+    border: 5px solid #23b123;
+    border-radius: 30px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #5e17eb;
+    box-shadow: 5px 10px #ffde59;
+    padding: 15px 30px;
+    transition: all 0.3s ease;
+}
+
+.valider:hover {
+    background-color: #5cdb35;
+    box-shadow: 5px 10px #1e8810;
+    transition: all 0.3s ease;
+    color: #5e17eb;
+}
+
+
 #connexion {
     display: inline-block;
     margin: 20px;
