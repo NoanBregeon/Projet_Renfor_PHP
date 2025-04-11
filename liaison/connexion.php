@@ -42,7 +42,7 @@ if(isset($_POST["validation"])){
             </form>
         </div>
         <div class="form-toggle">
-            <a href="creationSansChatGPT.php" class="button_form">Créer un compte</a>
+            <a href="creation.php" class="button_form">Créer un compte</a>
         </div>
         <div class="form-toggle">
             <a href="../index.php" class="button_form">Retour</a>
