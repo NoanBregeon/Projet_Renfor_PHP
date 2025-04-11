@@ -2,6 +2,7 @@
 session_start();
 include("Bdd.php");
 $connection="non";
+$erreur="";
 if(isset($_POST["validation"])){
     $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'"';
     $temp1 = $pdo->query($sql1);
@@ -20,10 +21,10 @@ if(isset($_POST["validation"])){
                 header("Location: ../index.php");
             }
         }else{
-            echo "mdp != confirmation";
+            $erreur=1;
         }
     }else{
-        echo '<p class="user_util">Cet utilisateur existe déjà</p>';
+        $erreur=2;
     }
 }
 
@@ -49,6 +50,13 @@ if(isset($_POST["validation"])){
             <input type="password" name="mdp" id="mdp" required>
             <label for="confirmMdp">Confirme mot de passe</label>
             <input type="password" name="confirmMdp" id="mdp" required>
+            <?php
+            if($erreur==1){
+                echo "mdp != confirmation";
+            }elseif($erreur==2){
+                echo '<p class="user_util">Cet utilisateur existe déjà</p>';
+            }
+            ?>
             <input type="submit" class="button_connexion" value="Créer">
             </form>
         </div>
