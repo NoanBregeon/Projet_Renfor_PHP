@@ -10,92 +10,70 @@ $division = $_SESSION['valid_division'] ?? 0;
 
 $total_fait = $addition + $soustraction + $multiplication + $division;
 
-
 // Total attendu : 240 questions (60 par opération)
-$total_questions = 240  ;
-$percent_global = min(100, round(($total_fait / $total_questions) * 100));
+$total_questions = 240;
+$percent_global = ($total_questions > 0) ? min(100, round(($total_fait / $total_questions) * 100)) : 0;
 
 // Couleur dynamique de la barre
-$couleur = "#8e44ad";
-if ($percent_global >= 25) $couleur = "#5e17eb";
-if ($percent_global >= 50) $couleur = "#28a745";
-if ($percent_global >= 75) $couleur = "#19fd52";
-if ($percent_global == 100) $couleur = "#00c200";
+function getCouleur($percent) {
+    if ($percent >= 100) return "#00c200";
+    if ($percent >= 75) return "#19fd52";
+    if ($percent >= 50) return "#28a745";
+    if ($percent >= 25) return "#5e17eb";
+    return "#8e44ad";
+}
+$couleur = getCouleur($percent_global);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabou quiz</title>
+    <title>Gabou Quiz - Bienvenue <?= htmlspecialchars($_SESSION['nom'] ?? '') ?></title>
     <link rel="stylesheet" href="styles/styles.css?v=0">
-    <style>
-    </style>
 </head>
 <body>
     <div class="contener">
         <?php if (isset($_SESSION['nom'])): ?>
             <div class="header">
-                
-                <h1>Bienvenue <?= ($_SESSION['nom']) ?> !</h1>
-            </div><a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a>
+                <h1>Bienvenue <?= htmlspecialchars($_SESSION['nom']) ?> !</h1>
+            </div>
+            <a class="button" id="deconnexion" href="liaison/deconnexion.php">Déconnexion</a>
             <div>
                 <img class="logo" src="styles/logo_grenouille.png" alt="logo" title="logo">
             </div>
             <div class="layout">
-                <!-- Colonne gauche : boutons de quiz -->
                 <div class="quiz-buttons">
-                    <a class="button_lien" href="quiz/quiz.php?type=addition">
-                        Addition <img class="img" src="styles/plus.png" alt="plus" title="plus">
-                    </a>
-                    <a class="button_lien" href="quiz/quiz.php?type=soustraction">
-                        Soustraction <img class="img" src="styles/remove.png" alt="soustraction" title="soustraction">
-                    </a>
-                    <a class="button_lien" href="quiz/quiz.php?type=multiplication">
-                        Multiplication <img class="img" src="styles/multiplication.png" alt="multiplication" title="multiplication">
-                    </a>
-                    <a class="button_lien" href="quiz/quiz.php?type=division">
-                        Division <img class="img" src="styles/division.png" alt="division" title="division">
-                    </a>
-                    <?php if ($_SESSION['addition'] >= 60 && $_SESSION['soustraction'] >= 60 && $_SESSION['multiplication'] >= 60 && $_SESSION['division'] >= 60){
-                        echo '<a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini<img class="img" src="styles/cadenas-ouvert.png" alt="debloqué" title="debloqué"></a>';
-                    }else{
-                        echo '<a class="button bloquer_infini" href="index.php">infini<img class="img" src="styles/cadenas.png" alt="bloqué" title="bloqué"></a>';
-                    }
-                    ?>
-
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                    <a class="button_lien" href="quiz/quiz.php?type=addition">Addition</a>
+                    <a class="button_lien" href="quiz/quiz.php?type=soustraction">Soustraction</a>
+                    <a class="button_lien" href="quiz/quiz.php?type=multiplication">Multiplication</a>
+                    <a class="button_lien" href="quiz/quiz.php?type=division">Division</a>
+                    <?php if ($addition >= 60 && $soustraction >= 60 && $multiplication >= 60 && $division >= 60): ?>
+                        <a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini</a>
+                    <?php else: ?>
+                        <a class="button bloquer_infini" href="index.php">infini</a>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['role'] === 'admin'): ?>
                         <a class="button_admin" href="admin/dashboard_admin.php">Admin</a>
                     <?php endif; ?>
                 </div>
-
-                <!-- Colonne droite : barre de progression verticale -->
             </div>
-            
             <div class="progress-global">
-            
                 <div class="barre-texte-verticale">
-                    <?= $total_fait ?>/<?= $total_questions ?><br>
-                    Progression
+                    <?= $total_fait ?>/<?= $total_questions ?><br>Progression
                 </div>
                 <div class="barre-globale-verticale">
-                    <div class="barre-globale-remplie-verticale"
-                        style="width: <?= $percent_global ?>%; background-color: <?= $couleur ?>;">
+                    <div class="barre-globale-remplie-verticale" style="width: <?= $percent_global ?>%; background-color: <?= $couleur ?>;">
                         <?= $percent_global ?>%
                     </div>
                 </div>
             </div>
-        <?php else: ?>
-            <div class="header"></div>
-            <h1>Bienvenue</h1>
-            <div>
-                <a class="button" id="connexion" href='liaison/connexion.php'>Connexion</a><br>
-                <a class="button" id="connexion" href='liaison/creation.php'>Créer un compte</a><br>
-            </div>
             <div class="footer"></div>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['nom'])): ?>
-        <div class="footer"></div>
+            
+        <?php else: ?>
+            <h1>Bienvenue</h1>
+            <a class="button" id="connexion" href='liaison/connexion.php'>Connexion</a><br>
+            <a class="button" id="connexion" href='liaison/creation.php'>Créer un compte</a>
         <?php endif; ?>
     </div>
 </body>
