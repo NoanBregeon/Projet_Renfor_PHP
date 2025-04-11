@@ -1,9 +1,6 @@
 <?php
 $x=0;
 $niveau;
-$sql= 'SELECT * FROM questions WHERE id='.$_GET["question"];
-$temp = $pdo->query($sql);
-$resultats=$temp->fetch();
 if($_GET["question"]==0){
     header('Location: quiz.php?type=addition&question=1');
 }
@@ -14,10 +11,13 @@ if (!isset($_GET["reponse"])){
     $niveau=$_SESSION["niveau"];
 }
 $type=$_GET["type"];
-
-if($resultats["difficulty"]==1){$_SESSION["dificulty"]=0;}
-elseif($resultats["difficulty"]==2){$_SESSION["dificulty"]=20;}
-elseif($resultats["difficulty"]==3){$_SESSION["dificulty"]=40;}
+if($niveau-$_SESSION["dificulty"]>=21){
+    $_SESSION["dificulty"]=$_SESSION["dificulty"]+20;
+    
+}
+if($_SESSION["niv"]==1){$_SESSION["dificulty"]=0;}
+elseif($_SESSION["niv"]==2){$_SESSION["dificulty"]=20;}
+elseif($_SESSION["niv"]==3){$_SESSION["dificulty"]=40;}
 if($niveau>60){
     $type="soustraction";
     $x=60;
@@ -45,6 +45,9 @@ if($niveau>240){
 $x=$x+$_SESSION["dificulty"];
 
 
+$sql= 'SELECT * FROM questions WHERE id='.$_GET["question"];
+$temp = $pdo->query($sql);
+$resultats=$temp->fetch();
 ?>
 
 <!DOCTYPE html>
