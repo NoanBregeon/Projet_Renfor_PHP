@@ -1,23 +1,36 @@
 <?php
 session_start();
 include("Bdd.php");
-$connection="non";
-$erreur="";
-if(isset($_POST["validation"])){
-    $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'" AND password="'.$_POST["mdp"].'"';
-    $temp1 = $pdo->query($sql1);
-    $resultats1 = $temp1->fetch();
-    if( isset($resultats1["username"]) &&  isset($resultats1["password"])){
-        $connection="ok";
-        $_SESSION["user_id"]=$resultats1["id"];
-        require_once 'maj_session.php';
-        header("Location: ../index.php");
-    }else{
-        $erreur=1;
-    }
-    
-}
 
+$erreur = "";
+
+if (isset($_POST["validation"])) {
+    if (empty($_POST["nom"]) || empty($_POST["mdp"])) {
+        $erreur = "Veuillez remplir tous les champs.";
+    } else {
+        try {
+            $sql1 = 'SELECT * FROM users WHERE username = ?';
+            $stmt = $pdo->prepare($sql1);
+            $stmt->execute([$_POST["nom"]]);
+            $resultats1 = $stmt->fetch();
+
+            if ($resultats1) {
+                if (($_POST["mdp"] == $resultats1["password"])) {
+                    $_SESSION["user_id"] = $resultats1["id"];
+                    require_once 'maj_session.php';
+                    header("Location: ../index.php");
+                    exit;
+                } else {
+                    $erreur = "Mot de passe incorrect.";
+                }
+            } else {
+                $erreur = "Utilisateur non trouvé.";
+            }
+        } catch (PDOException $e) {
+            $erreur = "Erreur de connexion à la base de données : " . $e->getMessage();
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,11 +53,11 @@ if(isset($_POST["validation"])){
                 
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" id="mdp" required>
-                <?php
-                if($erreur==1){
-                echo '<p class="user_utile">Identifiant ou mot de passe incorrect</p>';
-                }   
-                ?>
+                
+                <?php if (!empty($erreur)): ?>
+                    <p class="user_utile"><?= htmlspecialchars($erreur) ?></p>
+                <?php endif; ?>
+                
                 <input type="submit" class="button_connexion" value="Se connecter">
             </form>
         </div>
