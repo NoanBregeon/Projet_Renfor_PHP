@@ -68,6 +68,7 @@ $couleur = getCouleur($percent_global);
                     </div>
                 </div>
             </div>
+            <div class="footer"></div>
             
         <?php else: ?>
             <h1>Bienvenue</h1>
@@ -75,6 +76,5 @@ $couleur = getCouleur($percent_global);
             <a class="button" id="connexion" href='liaison/creation.php'>Créer un compte</a>
         <?php endif; ?>
     </div>
-    <div class="footer"></div>
 </body>
 </html>
