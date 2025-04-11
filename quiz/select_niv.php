@@ -21,7 +21,7 @@ if($_GET["type"]=="soustraction"){
         <title>Document</title>
     </head>
     <body>
-        <h2>choisi ton niveau</h2>
+        <h2>Choisi ton niveau</h2>
         <div class="flex">
             <?php 
             while ($question<=20){

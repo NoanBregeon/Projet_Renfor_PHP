@@ -88,7 +88,7 @@ $resultats=$temp->fetch();
         <?php
         if (isset($_GET["reponse"])){
             if($_GET["reponse"]==$resultats["correct_answer"]){
-                echo '<div class="quiz">Bien joué</div><input type="hidden" name="suivant"><input class="button" type="submit" value="suivant">';
+                echo '<div class="quiz">Bien joué</div><input type="hidden" name="suivant"><input class="button" type="submit" value="Suivant">';
                 $_SESSION["niveau"]=$_GET["question"]+1;
                 if($_GET["question"]-$x==$_SESSION[$_GET["type"]]){
                     $_SESSION[$_GET["type"]]=$_SESSION[$_GET["type"]]+1;
@@ -97,7 +97,7 @@ $resultats=$temp->fetch();
                 }
 
             }else{
-                echo '<div class="quiz">perdu la bonne reponse attendu est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
+                echo '<div class="quiz">Perdu la bonne réponse est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
                 $_SESSION["niveau"]=$_GET["question"]-1;   
             }
 

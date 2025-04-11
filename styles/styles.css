@@ -497,6 +497,7 @@ h1, h2 {
 
 .form-toggle {
     margin-top: 20px;
+    margin-bottom: 0px;
     display: flex;
     gap: 15px;
     justify-content: center;
@@ -546,7 +547,9 @@ h1, h2 {
 }
 .question{
     text-decoration: none;
+    text-shadow: 4px 4px 0px #ffde59;
 }
+
 .button_lien {
     margin: 0px;
     background-color: #ff88dc;
@@ -887,4 +890,9 @@ tr {
 
 .hidden {
     display: none;
+}
+
+.user_util {
+    color: red;
+    text-align: center;
 }

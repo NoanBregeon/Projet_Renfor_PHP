@@ -31,7 +31,7 @@ if(isset($_POST["validation"])){
             echo "mdp != confirmation";
         }
     }else{
-        echo "Cet utilisateur existe déjà";
+        echo '<p class="user_util">Cet utilisateur existe déjà</p>';
     }
 }
 

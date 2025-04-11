@@ -23,24 +23,24 @@ include("../liaison/maj_session.php")
             if(isset($_GET["type"]) && !isset($_GET["niv"]) && !isset($_GET["question"]) && !isset($_GET["infini"]) ){
             echo '<h2>Choisi ta difficulté</h2>';
             echo '<div class="choix du niveau">
-                <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">facile<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
+                <div><a class="button facile" href="quiz.php?type='.$_GET["type"].'&niv=1">Facile<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
                 if ($_SESSION[$progression] >= 20){
-                    echo '<div><a class="button moyen" href="quiz.php?type='.$_GET["type"].'&niv=2">moyen<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
+                    echo '<div><a class="button moyen" href="quiz.php?type='.$_GET["type"].'&niv=2">Moyen<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
                 }else{
 
-                    echo '<div><a class="button bloquer moyen" href="quiz.php?type='.$_GET["type"].'">moyen<img class="img" src="../styles/cadenas.png" alt="bloqué"></a></div>';
+                    echo '<div><a class="button bloquer moyen" href="quiz.php?type='.$_GET["type"].'">Moyen<img class="img" src="../styles/cadenas.png" alt="bloqué"></a></div>';
                 }
                 if ($_SESSION[$progression] >= 40){
-                    echo '<div><a class="button difficile" href="quiz.php?type='.$_GET["type"].'&niv=3">difficile<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
+                    echo '<div><a class="button difficile" href="quiz.php?type='.$_GET["type"].'&niv=3">Difficile<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
                 }else{
                     
-                    echo '<div><a class="button bloquer difficile" href="quiz.php?type='.$_GET["type"].'">difficile<img class="img" src="../styles/cadenas.png" alt="bloqué"></a></div>';
+                    echo '<div><a class="button bloquer difficile" href="quiz.php?type='.$_GET["type"].'">Difficile<img class="img" src="../styles/cadenas.png" alt="bloqué"></a></div>';
                 }
                 if ($_SESSION[$progression] >= 60){
-                    echo '<div><a class="button infini" href="quiz.php?type='.$_GET["type"].'&infini=1">infini<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
+                    echo '<div><a class="button infini" href="quiz.php?type='.$_GET["type"].'&infini=1">Infini<img class="img" src="../styles/cadenas-ouvert.png" alt="debloqué"></a></div>';
                 }else{
                     
-                    echo '<div><a class="button bloquer infini" href="quiz.php?type='.$_GET["type"].'">infini<img class="img" src="../styles/cadenas.png" alt="bloqué"></a></div>';
+                    echo '<div><a class="button bloquer infini" href="quiz.php?type='.$_GET["type"].'">Infini<img class="img" src="../styles/cadenas.png" alt="bloqué"></a></div>';
                 }
                 
                 echo '</div>';
@@ -55,18 +55,18 @@ include("../liaison/maj_session.php")
                 include("infini.php");
             }
             if(isset($_GET["niv"])){
-                echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">retour</a>';
+                echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">Retour</a>';
             }elseif(isset($_GET["question"])){
-                echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">menus</a>';
+                echo '<a href="quiz.php?type='.$_GET["type"].'&niv='.$_SESSION["niv"].'" class="button retour">Menu</a>';
             }elseif(isset($_GET["infini"])){
                 if($_GET["type"]=="tout"){
-                    echo '<a href="../index.php" class="button retour">menus</a>';
+                    echo '<a href="../index.php" class="button retour">Menu</a>';
                 }else{
-                    echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">menus</a>';
+                    echo '<a href="quiz.php?type='.$_GET["type"].'" class="button retour">Menu</a>';
                 }
             }
             else{
-                echo '<a href=".." class="button retour">retour</a>';
+                echo '<a href=".." class="button retour">Retour</a>';
             }
                 ?>
         <div class="footer"></div>
