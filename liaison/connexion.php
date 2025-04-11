@@ -11,6 +11,8 @@ if(isset($_POST["validation"])){
         $_SESSION["user_id"]=$resultats1["id"];
         require_once 'maj_session.php';
         header("Location: ../index.php");
+    }else{
+        echo "identifiant ou mots de passe incorrect";
     }
     
 }
