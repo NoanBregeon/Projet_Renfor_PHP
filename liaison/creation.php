@@ -55,6 +55,8 @@ if(isset($_POST["validation"])){
             <input type="text" name="nom" id="nom" required>
             <label for="mdp">Mot de passe</label>
             <input type="password" name="mdp" id="mdp" required>
+            <label for="confirmMdp">Confirme mot de passe</label>
+            <input type="password" name="confirmMdp" id="mdp" required>
             <input type="submit" class="button_connexion" value="Créer">
             </form>
         </div>
