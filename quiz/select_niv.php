@@ -35,6 +35,7 @@ if($_GET["type"]=="soustraction"){
                 
                 
                 echo '<div class="button';
+                if($_SESSION[$_GET["type"]]>$question+$_SESSION["dificulty"]+1){echo " validé";}
                 if($_SESSION[$_GET["type"]]<$question+$_SESSION["dificulty"]){echo " bloquer";}
                 echo'">';
                 echo $question.'</div></a>';

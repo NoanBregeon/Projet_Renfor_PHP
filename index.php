@@ -12,7 +12,7 @@ $total_fait = $addition + $soustraction + $multiplication + $division;
 
 
 // Total attendu : 240 questions (60 par opération)
-$total_questions = 240;
+$total_questions = 236  ;
 $percent_global = min(100, round(($total_fait / $total_questions) * 100));
 
 // Couleur dynamique de la barre
@@ -75,7 +75,7 @@ if ($percent_global == 100) $couleur = "#00c200";
             <div class="progress-global">
             
                 <div class="barre-texte-verticale">
-                    <?= $total_fait ?>/<?= $total_questions ?><br>
+                    <?= $total_fait-4 ?>/<?= $total_questions ?><br>
                     Progression
                 </div>
                 <div class="barre-globale-verticale">
