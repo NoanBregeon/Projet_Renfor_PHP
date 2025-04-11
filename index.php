@@ -75,5 +75,6 @@ $couleur = getCouleur($percent_global);
             <a class="button" id="connexion" href='liaison/creation.php'>Créer un compte</a>
         <?php endif; ?>
     </div>
+    <div class="footer"></div>
 </body>
 </html>
