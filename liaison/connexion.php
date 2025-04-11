@@ -42,7 +42,7 @@ if(isset($_POST["validation"])){
                 <input type="password" name="mdp" id="mdp" required>
                 <?php
                 if($erreur==1){
-                echo "identifiant ou mots de passe incorrect";
+                echo '<p class="user_utile">Identifiant ou mot de passe incorrect</p>';
                 }   
                 ?>
                 <input type="submit" class="button_connexion" value="Se connecter">
