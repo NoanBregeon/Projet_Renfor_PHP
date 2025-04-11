@@ -914,7 +914,13 @@ tr {
 }
 
 .user_util {
+    font-size: 30px;
     color: red;
     text-align: center;
 }
 
+.user_utile {
+    font-size: 20px;
+    color: red;
+    text-align: center;
+}
