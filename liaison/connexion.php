@@ -2,6 +2,7 @@
 session_start();
 include("Bdd.php");
 $connection="non";
+$erreur="";
 if(isset($_POST["validation"])){
     $sql1= 'SELECT * FROM users WHERE username="'.$_POST["nom"].'" AND password="'.$_POST["mdp"].'"';
     $temp1 = $pdo->query($sql1);
@@ -12,7 +13,7 @@ if(isset($_POST["validation"])){
         require_once 'maj_session.php';
         header("Location: ../index.php");
     }else{
-        echo "identifiant ou mots de passe incorrect";
+        $erreur=1;
     }
     
 }
@@ -39,7 +40,11 @@ if(isset($_POST["validation"])){
                 
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" id="mdp" required>
-                
+                <?php
+                if($erreur==1){
+                echo "identifiant ou mots de passe incorrect";
+                }   
+                ?>
                 <input type="submit" class="button_connexion" value="Se connecter">
             </form>
         </div>
