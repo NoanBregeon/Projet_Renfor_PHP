@@ -44,14 +44,26 @@ $couleur = getCouleur($percent_global);
             </div>
             <div class="layout">
                 <div class="quiz-buttons">
-                    <a class="button_lien" href="quiz/quiz.php?type=addition">Addition</a>
-                    <a class="button_lien" href="quiz/quiz.php?type=soustraction">Soustraction</a>
-                    <a class="button_lien" href="quiz/quiz.php?type=multiplication">Multiplication</a>
-                    <a class="button_lien" href="quiz/quiz.php?type=division">Division</a>
+                    <a class="button_lien" href="quiz/quiz.php?type=addition">Addition
+                        <img class="img" src="styles/plus.png" alt="Addition Icon">
+                    </a>
+                    <a class="button_lien" href="quiz/quiz.php?type=soustraction">Soustraction
+                        <img class="img" src="styles/remove.png" alt="Addition Icon">
+                    </a>
+                    <a class="button_lien" href="quiz/quiz.php?type=multiplication">Multiplication
+                        <img class="img" src="styles/multiplication.png" alt="Addition Icon">
+                    </a>
+                    <a class="button_lien" href="quiz/quiz.php?type=division">Division
+                        <img class="img" src="styles/division.png" alt="Addition Icon">
+                    </a>
                     <?php if ($addition >= 60 && $soustraction >= 60 && $multiplication >= 60 && $division >= 60): ?>
-                        <a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini</a>
+                        <a class="button infini" href="quiz/quiz.php?type=tout&infini=1">infini
+                        <img class="img" src="styles/cadenas-ouvert.png" alt="Lock Icon">
+                        </a>
                     <?php else: ?>
-                        <a class="button bloquer_infini" href="index.php">infini</a>
+                        <a class="button bloquer_infini" href="index.php">infini
+                            <img class="img" src="styles/cadenas.png" alt="Lock Icon">
+                        </a>
                     <?php endif; ?>
                     <?php if ($_SESSION['role'] === 'admin'): ?>
                         <a class="button_admin" href="admin/dashboard_admin.php">Admin</a>
