@@ -15,7 +15,7 @@ if (isset($_POST["validation"])) {
                 $stmt = $pdo->prepare('INSERT INTO users (username, password, roles, progression_addition, progression_soustraction, progression_division, progression_multiplication) VALUES (:username, :password, "user", 1, 1, 1, 1)');
                 $stmt->execute([
                     ':username' => $_POST["nom"],
-                    ':password' => password_hash($_POST["mdp"], PASSWORD_DEFAULT)
+                    ':password' =>$_POST["mdp"]
                 ]);
 
                 $stmt = $pdo->prepare('SELECT * FROM users WHERE username = :username');
