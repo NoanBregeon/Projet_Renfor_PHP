@@ -100,9 +100,14 @@ $resultats=$temp->fetch();
                 echo '<div class="quiz">Perdu la bonne réponse est : '.$resultats["correct_answer"].'</div><input type="hidden" name="suivant"><input type="image" src="../styles/smileypascontent.png" class="button" alt="Smiley pas content">';
                 $_SESSION["niveau"]=$_GET["question"]-1;   
             }
-
+            
             if(isset($_GET["suivant"])){
-                header('Location: quiz.php?type='.$type.'&question='.$_SESSION["niveau"]);
+                if($_GET["question"]==240){
+                    header('Location: ../index.php');;
+                }else{
+
+                    header('Location: quiz.php?type='.$type.'&question='.$_SESSION["niveau"]);
+                }
             }
         }
         ?>
