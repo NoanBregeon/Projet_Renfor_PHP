@@ -43,7 +43,50 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- Déchargement des données de la table `questions`
 --
 
-INSERT INTO `questions` (`id`, `operation_type`, `nombre1`, `nombre2`, `correct_answer`, `reste`, `difficulty`) VALUES
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `roles` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'user',
+  `progression_addition` int DEFAULT '1',
+  `valid_addition` int DEFAULT '0',
+  `progression_soustraction` int DEFAULT '1',
+  `valid_soustraction` int DEFAULT '0',
+  `progression_division` int DEFAULT '1',
+  `valid_division` int DEFAULT '0',
+  `progression_multiplication` int DEFAULT '1',
+  `valid_multiplication` int DEFAULT '0',
+  `streak` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `roles`, `progression_addition`, `valid_addition`, `progression_soustraction`, `valid_soustraction`, `progression_division`, `valid_division`, `progression_multiplication`, `valid_multiplication`, `streak`) VALUES
+(1, 'Admin', 'Admin1234', 'admin', 60, 60, 60, 60, 60, 60, 60, 60, 0),
+(2, 'TEST', 'TEST', 'user', 1, 0, 1, 0, 1, 0, 1, 0, 0),
+(3, 'enfant1', 'enfant1', 'user', 10, 0, 8, 0, 40, 0, 28, 0, 0),
+(4, 'enfant2', 'enfant2', 'user', 28, 0, 5, 0, 40, 0, 30, 0, 0);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `questions` VALUES
+(`id`, `operation_type`, `nombre1`, `nombre2`, `correct_answer`, `reste`, `difficulty`),
 (1, 'addition', 10, 1, 11, NULL, 1),
 (2, 'addition', 5, 4, 9, NULL, 1),
 (3, 'addition', 3, 8, 11, NULL, 1),
@@ -223,104 +266,4 @@ INSERT INTO `questions` (`id`, `operation_type`, `nombre1`, `nombre2`, `correct_
 (177, 'multiplication', 1, 8, 8, NULL, 3),
 (178, 'multiplication', 13, 1, 13, NULL, 3),
 (179, 'multiplication', 6, 9, 54, NULL, 3),
-(180, 'multiplication', 2, 3, 6, NULL, 3),
-(181, 'division', 4, 4, 1, 0, 1),
-(182, 'division', 7, 2, 3, 1, 1),
-(183, 'division', 20, 4, 5, 0, 1),
-(184, 'division', 27, 5, 5, 2, 1),
-(185, 'division', 10, 5, 2, 0, 1),
-(186, 'division', 10, 4, 2, 2, 1),
-(187, 'division', 11, 3, 3, 2, 1),
-(188, 'division', 10, 5, 2, 0, 1),
-(189, 'division', 5, 4, 1, 1, 1),
-(190, 'division', 10, 3, 3, 1, 1),
-(191, 'division', 17, 4, 4, 1, 1),
-(192, 'division', 2, 2, 1, 0, 1),
-(193, 'division', 4, 1, 4, 0, 1),
-(194, 'division', 2, 1, 2, 0, 1),
-(195, 'division', 8, 2, 4, 0, 1),
-(196, 'division', 21, 4, 5, 1, 1),
-(197, 'division', 5, 5, 1, 0, 1),
-(198, 'division', 27, 5, 5, 2, 1),
-(199, 'division', 23, 4, 5, 3, 1),
-(200, 'division', 5, 3, 1, 2, 1),
-(201, 'division', 11, 2, 5, 1, 2),
-(202, 'division', 18, 2, 9, 0, 2),
-(203, 'division', 9, 7, 1, 2, 2),
-(204, 'division', 37, 5, 7, 2, 2),
-(205, 'division', 34, 7, 4, 6, 2),
-(206, 'division', 18, 2, 9, 0, 2),
-(207, 'division', 15, 7, 2, 1, 2),
-(208, 'division', 65, 6, 10, 5, 2),
-(209, 'division', 72, 9, 8, 0, 2),
-(210, 'division', 83, 10, 8, 3, 2),
-(211, 'division', 34, 8, 4, 2, 2),
-(212, 'division', 61, 7, 8, 5, 2),
-(213, 'division', 8, 1, 8, 0, 2),
-(214, 'division', 2, 1, 2, 0, 2),
-(215, 'division', 13, 10, 1, 3, 2),
-(216, 'division', 39, 8, 4, 7, 2),
-(217, 'division', 15, 3, 5, 0, 2),
-(218, 'division', 18, 2, 9, 0, 2),
-(219, 'division', 21, 3, 7, 0, 2),
-(220, 'division', 20, 3, 6, 2, 2),
-(221, 'division', 124, 8, 15, 4, 3),
-(222, 'division', 155, 13, 11, 12, 3),
-(223, 'division', 63, 5, 12, 3, 3),
-(224, 'division', 62, 4, 15, 2, 3),
-(225, 'division', 79, 11, 7, 2, 3),
-(226, 'division', 80, 11, 7, 3, 3),
-(227, 'division', 19, 2, 9, 1, 3),
-(228, 'division', 29, 2, 14, 1, 3),
-(229, 'division', 217, 15, 14, 7, 3),
-(230, 'division', 193, 14, 13, 11, 3),
-(231, 'division', 175, 13, 13, 6, 3),
-(232, 'division', 14, 1, 14, 0, 3),
-(233, 'division', 49, 6, 8, 1, 3),
-(234, 'division', 141, 11, 12, 9, 3),
-(235, 'division', 21, 3, 7, 0, 3),
-(236, 'division', 86, 11, 7, 9, 3),
-(237, 'division', 67, 5, 13, 2, 3),
-(238, 'division', 46, 6, 7, 4, 3),
-(239, 'division', 33, 14, 2, 5, 3),
-(240, 'division', 26, 2, 13, 0, 3);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `roles` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'user',
-  `progression_addition` int DEFAULT '1',
-  `valid_addition` int DEFAULT '0',
-  `progression_soustraction` int DEFAULT '1',
-  `valid_soustraction` int DEFAULT '0',
-  `progression_division` int DEFAULT '1',
-  `valid_division` int DEFAULT '0',
-  `progression_multiplication` int DEFAULT '1',
-  `valid_multiplication` int DEFAULT '0',
-  `streak` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `roles`, `progression_addition`, `valid_addition`, `progression_soustraction`, `valid_soustraction`, `progression_division`, `valid_division`, `progression_multiplication`, `valid_multiplication`, `streak`) VALUES
-(1, 'Admin', 'Admin1234', 'admin', 60, 60, 60, 60, 60, 60, 60, 60, 0),
-(2, 'TEST', 'TEST', 'user', 1, 0, 1, 0, 1, 0, 1, 0, 0),
-(3, 'enfant1', 'enfant1', 'user', 10, 0, 8, 0, 40, 0, 28, 0, 0),
-(4, 'enfant2', 'enfant2', 'user', 28, 0, 5, 0, 40, 0, 30, 0, 0);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(180, 'multiplication', 2, 3, 6, NULL, 3);
